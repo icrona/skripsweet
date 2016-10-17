@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => 'hello@example.com',
-        'name' => 'Example',
+        'name' => 'Laravel Blog',
     ],
 
     /*
@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'password' => env('dbbc8c5ff495742e7785708633d9501b'),
+    'password' => env('dbbc8c5ff495742e7785708633d9501b '),
 
     /*
     |--------------------------------------------------------------------------

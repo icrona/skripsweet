@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('mg.skripsweet.xyz'),
-        'secret' => env('dbbc8c5ff495742e7785708633d9501b'),
+        'domain' => 'mg.skripsweet.xyz',
+        'secret' => 'key-4d636a915168c3cdbac97254eb407f09',
     ],
 
     'ses' => [
