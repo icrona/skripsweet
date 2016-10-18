@@ -34,6 +34,6 @@ class HomeController extends Controller
         $url = Storage::disk('s3')->url('cakeTexture.png');
         
 
-        return view('home')-withUrl($url);
+        return view('home')->withUrl($url);
     }
 }
