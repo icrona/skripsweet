@@ -27,13 +27,16 @@ class HomeController extends Controller
     public function index()
     {  
         //send to aws
+        /*
         $s3=\Storage::disk('s3');
         $s3->put('myFile.txt','This is a dummy file with some content','public');
-        
+        */
         //get url from aws
+        /*
         $url = Storage::disk('s3')->url('cakeTexture.png');
-        
+        */
 
-        return view('home')->withUrl($url);
+        //return view('home')->withUrl($url);
+        return view('home');
     }
 }
