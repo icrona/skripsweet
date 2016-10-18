@@ -9,6 +9,7 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <img src="{{$url}}">
                 </div>
             </div>
         </div>

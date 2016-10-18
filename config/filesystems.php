@@ -45,7 +45,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('images/'),
         ],
 
         'public' => [
@@ -56,10 +56,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => 'AKIAICVJDKTM3Q2CEQAA',
+            'secret' => 'HSvaMhynCTGql38rTQ79Zia9z93xF8h9ZH4J/4ZC',
+            'region' => 'us-east-1',
+            'bucket' => 'skripsweet',
         ],
 
     ],
