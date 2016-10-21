@@ -18,11 +18,3 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::post('getOrder',function(Request $request){
-	$image=$request->file('image');
-	$imageFileName = time() . '.' . $image->getClientOriginalExtension();
-
-	$s3=\Storage::disk('s3');
-	$filepath='/support-tickets'.$imageFileName;
-    $s3->put($filepath,file_get_contents($image),'public');
-});
