@@ -17,7 +17,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::post('/getOrder',function(Request $request){
+Route::get('/getOrder',function(Request $request){
 	$image=$request->file('image');
 	$imageFileName = time() . '.' . $image->getClientOriginalExtension();
 
