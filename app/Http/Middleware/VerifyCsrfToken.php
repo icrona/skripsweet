@@ -12,18 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except_urls = [
-        '/upload'
+        'upload',
     ];
 
-    public function handle($request, Closure $next)
-    {
-        $regex = '#' . implode('|', $this->except_urls) . '#';
-
-        if ($this->isReading($request) || $this->tokensMatch($request) || preg_match($regex, $request->path()))
-        {
-            return $this->addCookieToResponse($request, $next($request));
-        }
-
-        throw new TokenMismatchException;
-    }
 }
