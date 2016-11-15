@@ -1,3 +1,3 @@
 <?php
 
-Route::get('/upload', 'UploadCOntroller@getUpload');
+Route::post('/upload', 'UploadCOntroller@getUpload');
