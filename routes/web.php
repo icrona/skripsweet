@@ -18,4 +18,3 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::post('/update', 'UploadCOntroller@getUpload');
