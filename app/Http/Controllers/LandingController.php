@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Faq;
+use App\Cake;
 
 class LandingController extends Controller
 {
@@ -52,7 +53,8 @@ class LandingController extends Controller
     public function welcome(){
     	//with some faq and some cake
     	$faqs = Faq::all()->take(5);
-    	return view('welcome')->withFaqs($faqs);
+      $cakes=Cake::orderByRaw('RAND()')->take(3)->get();
+    	return view('welcome')->withFaqs($faqs)->withCakes($cakes);
     }
 
 }

@@ -115,7 +115,7 @@
                           <h3 class="modal-title" id="myModalLabel">Add New Cake</h3>
                         </div>
                         <div class="modal-body">
-                          <form method="post" enctype="multipart/form-data"  v-on:submit.prevent="upload" data-parsley-validate="">
+                          <form method="post" enctype="multipart/form-data"  onsubmit="resetFileForm()" v-on:submit.prevent="upload" data-parsley-validate="">
                             <div class="form-group">
                               <label for="name">Name:</label>                            
                               <input type="text" name="name" class="form-control" v-model="newItem.name" required=""/>  
@@ -148,7 +148,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
+                              <input id="resetFile" type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
                             </div>
 
                             <div class="form-group">
@@ -170,7 +170,7 @@
                         <h3 class="modal-title" id="myModalLabel">Edit Cake</h3>
                       </div>
                       <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
+                        <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
 
                         <div class="form-group">
                               <label for="name">Name:</label>                            
@@ -204,8 +204,8 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input type="file" name="image" class="form-control"  @change="onFileChange" />
-                              @{{ fillItem.image}}  
+                              <input id="resetFile" type="file" name="image" class="form-control" @change="onFileChange" />
+                               
                             </div>
                           
                           <div class="form-group">
@@ -269,7 +269,7 @@
                           <h3 class="modal-title" id="myModalLabel">Add New Cake</h3>
                         </div>
                         <div class="modal-body">
-                          <form method="post" enctype="multipart/form-data"  v-on:submit.prevent="upload" data-parsley-validate="">
+                          <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="upload" data-parsley-validate="">
                             <div class="form-group">
                               <label for="name">Name:</label>                            
                               <input type="text" name="name" class="form-control" v-model="newItem.name" required=""/>  
@@ -302,7 +302,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
+                              <input id="resetFile" type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
                             </div>
 
                             <div class="form-group">
@@ -324,7 +324,7 @@
                         <h3 class="modal-title" id="myModalLabel">Edit Cake</h3>
                       </div>
                       <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
+                        <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
 
                         <div class="form-group">
                               <label for="name">Name:</label>                            
@@ -358,117 +358,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input type="file" name="image" class="form-control"  @change="onFileChange" /> 
-                            </div>
-                          
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div> 
-                </div>
-                <div class="modal fade" id="create-item-birthday"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                          </button>
-                          <h3 class="modal-title" id="myModalLabel">Add New Cake</h3>
-                        </div>
-                        <div class="modal-body">
-                          <form method="post" enctype="multipart/form-data"  v-on:submit.prevent="upload" data-parsley-validate="">
-                            <div class="form-group">
-                              <label for="name">Name:</label>                            
-                              <input type="text" name="name" class="form-control" v-model="newItem.name" required=""/>  
-                            </div>
-
-                            <div class="form-group">
-                              <label for="description">Description:</label>
-                              <textarea name="description" class="form-control" v-model="newItem.description" required="">
-                              </textarea>                              
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">Category:</label>
-                                <select name="category" class="form-control" v-model="newItem.category" required="">
-                                  <option>Birthday</option>
-                                  <option>Anniversary</option>
-                                  <option>Seasonal</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="size">Size:</label>                            
-                              <input type="text" name="size" class="form-control" v-model="newItem.size" required="" data-parsley-type="digits"/>  
-                            </div>
-
-                            <div class="form-group">
-                              <label for="price">Price:</label>                            
-                              <input type="text" name="price" class="form-control" v-model="newItem.price" required="" data-parsley-type="digits"/>  
-                            </div>
-
-                            <div class="form-group">
-                              <label for="image">Image:</label>                            
-                              <input type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
-                            </div>
-
-                            <div class="form-group">
-                              <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal fade" id="edit-seasonal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                        </button>
-                        <h3 class="modal-title" id="myModalLabel">Edit Cake</h3>
-                      </div>
-                      <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
-
-                        <div class="form-group">
-                              <label for="name">Name:</label>                            
-                              <input type="text" name="name" class="form-control" v-model="fillItem.name" required=""/>  
-                            </div>
-
-                            <div class="form-group">
-                              <label for="description">Description:</label>
-                              <textarea name="description" class="form-control" v-model="fillItem.description" required="">
-                              </textarea>                              
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">Category:</label>
-                                <select name="category" class="form-control" v-model="fillItem.category" required="">
-                                  <option>Birthday</option>
-                                  <option>Anniversary</option>
-                                  <option>Seasonal</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="size">Size:</label>                            
-                              <input type="text" name="size" class="form-control" v-model="fillItem.size" required="" data-parsley-type="digits"/>  
-                            </div>
-
-                            <div class="form-group">
-                              <label for="price">Price:</label>                            
-                              <input type="text" name="price" class="form-control" v-model="fillItem.price" required="" data-parsley-type="digits"/>  
-                            </div>
-
-                            <div class="form-group">
-                              <label for="image">Image:</label>                            
-                              <input type="file" name="image" class="form-control"  @change="onFileChange" />  
+                              <input id="resetFile" type="file" name="image" class="form-control"  @change="onFileChange" /> 
                             </div>
                           
                           <div class="form-group">
@@ -532,7 +422,7 @@
                           <h3 class="modal-title" id="myModalLabel">Add New Cake</h3>
                         </div>
                         <div class="modal-body">
-                          <form method="post" enctype="multipart/form-data"  v-on:submit.prevent="upload" data-parsley-validate="">
+                          <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="upload" data-parsley-validate="">
                             <div class="form-group">
                               <label for="name">Name:</label>                            
                               <input type="text" name="name" class="form-control" v-model="newItem.name" required=""/>  
@@ -565,7 +455,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
+                              <input id="resetFile" type="file" name="image" class="form-control"   @change="onFileChange" required="" />  
                             </div>
 
                             <div class="form-group">
@@ -577,7 +467,7 @@
                     </div>
                   </div>
 
-                  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal fade" id="edit-seasonal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -587,7 +477,7 @@
                         <h3 class="modal-title" id="myModalLabel">Edit Cake</h3>
                       </div>
                       <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
+                        <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
 
                         <div class="form-group">
                               <label for="name">Name:</label>                            
@@ -621,7 +511,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input type="file" name="image" class="form-control"  @change="onFileChange" />
+                              <input id="resetFile" type="file" name="image" class="form-control"  @change="onFileChange" />
                             </div>
                           
                           <div class="form-group">

@@ -42,4 +42,7 @@
             break;
     }
   @endif
+  function resetFileForm(){
+    document.getElementById("resetFile").value = "";
+  }
 </script>

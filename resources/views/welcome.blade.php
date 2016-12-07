@@ -122,44 +122,24 @@
     <section id="gallery" class="container-fluid features">
         <div class="container">
           <div class="page-header">
-            <h1 class="text-center">Gallery</h1>
+            <h2 style="text-align: center;">Gallery</h2>
           </div>
           <p class="lead text-center">Baker's Galleries are Here!</p>
           <div class="container">
             <div class="row stylish-panel">
+            @foreach($cakes as $cake)
               <div class="col-md-4">
                 <div>
-                  <img src="gambar/Groudon.png" alt="Groudon" class="img-circle img-thumbnail">
-                  <h2>Groudon</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                  <a href="orderUser.html" class="btn btn-primary" title="Order">Order >></a>
+                  <img src="{{asset('images/'.$cake->image)}}" class="img-circle img-thumbnail">
+                  <h3>{{$cake->name}}</h3>
+                  <p>{{$cake->description}}</p>
+                  <a href="{{route('gallery.show',$cake->id)}}" class="btn btn-primary" title="Order">Order >></a>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div>
-                  <img src="gambar/Groudon.png" alt="Groudon" class="img-circle img-thumbnail">
-                  <h2>Groudon 2</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                  <a href="orderUser.html" class="btn btn-primary" title="Order">Order »</a>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div>
-                  <img src="gambar/Groudon.png" alt="Groudon" class="img-circle img-thumbnail">
-                  <h2>Groudon 3</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                  <a href="orderUser.html" class="btn btn-primary" title="Order">Order »</a>
-                </div>
-              </div>
-                
-                <div class="col-md-12" style="margin-top:10%;">
-                    <a type="button" class="btn btn-link" href="galleryUser.html" style="font-size:200%; text-align:right;">See More</a>
+              @endforeach
+                <div class="col-md-12">
+                <br>
+                    <a type="button" class="btn btn-link" href="{{route('gallery.index')}}" style="font-size:200%; text-align:right;">See More</a>
                 </div>
               
             </div>
@@ -188,18 +168,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="device-container">
-                        <div class="device-mockup iphone6_plus portrait white">
-                            <div class="device">
-                                <div class="screen">
-                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="img/demo-screen-1.jpg" class="img-responsive" alt=""> </div>
-                                <div class="button">
-                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="{{asset('images/logo/logo.png')}}" ></a>
                 </div>
                 <div class="col-md-8">
                     <div class="container-fluid">

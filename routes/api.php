@@ -17,7 +17,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-
 Route::get('/faqadmin/search', 'FaqController@searchFaq');
 Route::resource('faqadmin','FaqController');
 
