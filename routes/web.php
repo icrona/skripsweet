@@ -11,10 +11,43 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',['as'=>'welcome','uses'=>'LandingController@welcome']);
+
+Route::get('/#gallery', function () {
+    return view('welcome#gallery');
 });
 
-Auth::routes();
+Route::get('/#about_us', function () {
+    return view('welcome#about_us');
+});
 
-Route::get('/home', 'HomeController@index');
+Route::get('/#contact', function () {
+    return view('welcome#contact');
+});
+
+Route::get('/#faq', function () {
+    return view('welcome#faq');
+});
+
+Route::get('/#download', function () {
+    return view('welcome#download');
+});
+
+Route::get('/faq',['as'=>'faq','uses'=>'LandingController@index']);
+
+Route::get('/home', 'OrderController@home');
+Route::get('/orders', 'OrderController@orders');
+Route::get('/report', 'OrderController@report');
+
+Route::get('/manage','ManageController@index');
+
+Route::get('/signatures','CakeController@index');
+
+Route::get('/settings',['as'=>'settings','uses'=>'SettingController@index']);
+
+Route::put('/settings',['as'=>'settings.profile','uses'=>'SettingController@profile']);
+Route::post('/settings/password',['as'=>'settings.password','uses'=>'SettingController@changePassword']);
+
+Route::get('/logout', 'Auth\LoginController@logout');
+
+Auth::routes();

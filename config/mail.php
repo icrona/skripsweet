@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'mailgun'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'hello@example.com',
-        'name' => 'Laravel Blog',
+        'address' => 'skripsweetcake@gmail.com',
+        'name' => 'Reset Password',
     ],
 
     /*
@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'username' => env('postmaster@mg.skripsweet.xyz'),
+    'username' => env('MAIL_USERNAME','skripsweetcake@gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'password' => env('dbbc8c5ff495742e7785708633d9501b '),
+    'password' => env('MAIL_PASSWORD', 'admintukangkue0512'),
 
     /*
     |--------------------------------------------------------------------------
