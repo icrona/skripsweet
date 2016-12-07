@@ -16,7 +16,7 @@ new Vue({
     offset: 4,
     formErrors:{},
     formErrorsUpdate:{},
-    newItem : {'name':'','description':'','category':'','size':'','price':'','image':''},
+    newItem : {'name':'','description':'','category':'anniversary','size':'','price':'','image':''},
     fillItem : {'name':'','description':'','category':'','size':'','price':'','image':'','id':''},
     search : ''
   },
@@ -89,7 +89,7 @@ new Vue({
         this.changePage(this.pagination.current_page);
         this.newItem = {'name':'','description':'','category':'','size':'','price':'','image':''};
         this.fileName='';
-        $("#create-item").modal('hide');
+        $("#create-item-anniversary").modal('hide');
         toastr.success('Cake Added Successfully.', 'Success Alert', {timeOut: 3000});
       }, (response) => {
         this.formErrors = response.data;
@@ -124,7 +124,7 @@ new Vue({
       this.fillItem.id = cake.id;
       this.fillItem.price = cake.price;
       this.fillItem.image=cake.image;
-      $("#edit").modal('show');
+      $("#edit-anniversary").modal('show');
     },
 
     uploadEdit:function(id){
@@ -150,7 +150,7 @@ new Vue({
       this.$http.put('/api/cake/'+id,input).then((response) => {
         this.changePage(this.pagination.current_page);
         this.newItem = {'name':'','description':'','category':'','size':'','price':'','image':'','id':''};
-        $("#edit").modal('hide');
+        $("#edit-anniversary").modal('hide');
         toastr.success('Cake Updated Successfully.', 'Success Alert', {timeOut: 3000});
       }, (response) => {
         this.formErrors = response.data;
