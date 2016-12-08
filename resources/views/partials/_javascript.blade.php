@@ -20,6 +20,9 @@
 
     <script type="text/javascript" src="/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="/js/parsley.min.js"></script>
+
+    {{ Html::script('js/new-age.min.js') }}
+
     
     <script>
   @if(Session::has('message'))

@@ -10,8 +10,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    {{ Html::style('css/sweealert.css') }}
+    {{ Html::style('css/sweetalert.css') }}
 {{ Html::style('css/parsley.css') }}
+            
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     
     <style>       
     .stylish-panel {
@@ -68,7 +70,7 @@
         <div class="container">
             <h2 class="text-center">Customer Data</h2>
             <br><br>
-            {!! Form::open(['route' => ['gallery.order',$cake->id,'method'=>'POST'],'data-parsley-validate'=>'','class'=>'order_form']) !!}
+            {!! Form::open(['route' => ['gallery.order',$cake->id],'data-parsley-validate'=>'','class'=>'create_form']) !!}
                 <div class="row">
                     <div class="col-md-2 col-md-offset-3">
                         {{Form::label('name','Name:')}}
@@ -94,17 +96,18 @@
                         {{Form::label('email',"Email:")}}
                     </div>
                     <div class="col-md-4">
-                        {{Form::text('body',null,array('class'=>'form-control','requried'=>'','data-parsley-type'=>'email'))}}
+                        {{Form::text('email',null,array('class'=>'form-control','required'=>'','data-parsley-type'=>'email'))}}
                     </div>              
                 </div>
                 <br>
 
-                <div class="row">
+                <div class="row dateInput">
                     <div class="col-md-2 col-md-offset-3">
                         {{Form::label('date',"Date:")}}
+                        <p style="color: red; font-size:12px;">Minimum {{$days}} day(s) from today</p>
                     </div>
                     <div class="col-md-4">
-                        {{Form::date('date',\Carbon\Carbon::now(),array('class'=>'form-control','requried'=>''))}}
+                        {{Form::date('date',\Carbon\Carbon::now()->addDays($days),array('class'=>'form-control','required'=>'','min'=> \Carbon\Carbon::now()->addDays($days)->toDateString()))}}
                     </div>              
                 </div>
                 <br>
@@ -114,7 +117,7 @@
                         {{Form::label('address',"Address:")}}
                     </div>
                     <div class="col-md-4">
-                        {{Form::textarea('address',null,array('class'=>'form-control','requried'=>''))}}
+                        {{Form::textarea('address',null,array('class'=>'form-control','required'=>''))}}
                     </div>              
                 </div>
                 <br>
@@ -124,68 +127,29 @@
                         {{Form::label('notes',"Notes:")}}
                     </div>
                     <div class="col-md-4">
-                        {{Form::text('body',null,array('class'=>'form-control'))}}
+                        {{Form::textarea('notes',null,array('class'=>'form-control'))}}
                     </div>              
                 </div>
                 <br>
 
                 <div class="row">        
                   <div class="col-md-offset-5 col-md-2 text-center">
-                    {{Form::submit('Order Now',['class' =>'btn btn-success btn-block order-btn'])}}
+                  {{Form::submit('Order Now',['class' =>'btn btn-success btn-block btn-order'])}}
                   </div>
                 </div>
 
             {!! Form::close() !!}
         </div>
     </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     {{ Html::script('/js/parsley.min.js') }}
     {{ Html::script('/js/sweetalert.min.js') }}
-        <script type="text/javascript">
 
-        var name,phone,email,date,address;
-        $('button.order-btn').on('click', function(e){
-            name = $('#name').parsley();
-            phone = $('#phone').parsley();
-            email = $('#email').parsley();
-            date = $('#date').parsley();
-            address = $('#address').parsley();
-
-            e.preventDefault();
-            var self = $(this);
-            swal({
-                title             : "Are you sure?",
-                text              : "You will not be able to recover this Album!",
-                type              : "warning",
-                showCancelButton  : true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText : "Yes, delete it!",
-                cancelButtonText  : "No, Cancel delete!",
-                closeOnConfirm    : false,
-                closeOnCancel     : false
-            },
-            
-            function(isConfirm){
-                if(isConfirm){
-                    if(name.isValid() && phone.isValid() && email.isValid() && date.isValid() && address.isValid() ){
-                    
-                        swal("Deleted!","your album has been deleted", "success");
-
-                        setTimeout(function() {
-                            self.parents(".order_form").submit()
-                        }, 2000); 
-                    }
-                    else{
-                        swal("cancelled","Data invalid", "error");
-                        setTimeout(function() {
-                            self.parents(".order_form").submit()
-                        }, 2000); 
-                    }
-                }              
-                else{
-                      swal("cancelled","Your album is safe", "error");
-                }
-            });
+    <script type="text/javascript">
+        $('form').parsley({
+            excluded: '.dateInput input'
         });
-    </script> 
+    </script>
+
 @endsection

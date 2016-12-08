@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Order;
+
 class OrderController extends Controller
 {
     public function __construct()
@@ -15,11 +17,12 @@ class OrderController extends Controller
 
     public function home()
     {  
-        return view('admin.home');
+        $orders=Order::latest()->take(5)->get();
+        return view('admin.home')->withOrders($orders);
     } 
 
     public function orders(){
-    	return view('admin.orders');
+    	return view('admin.orders')->withOrders($orders);
     }
 
     public function report(){

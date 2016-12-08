@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <div class="tab-pane active" id="cake-anniversary">
+                <div class="tab-pane" id="cake-anniversary">
                     
                     <div class="row stylish-panel">
                         @foreach($anniversarys as $anniversary)
@@ -99,7 +99,7 @@
                     </div>
                 </div>
 
-                <div class="tab-pane active" id="cake-seasonal">
+                <div class="tab-pane" id="cake-seasonal">
                     
                     <div class="row stylish-panel">
                         @foreach($seasonals as $seasonal)
@@ -108,7 +108,7 @@
                               <img src="{{asset('images/'.$seasonal->image)}}" class="img-circle img-thumbnail">
                               <h3>{{$seasonal->name}}</h3>
                               <p>Rp. {{$seasonal->price}}</p>
-                              <a href="{{route('gallery.show',$seasonal->id)}}" class="btn btn-primary" title="Order">Order >></a>
+                              <a href="{{route('gallery.show',$seasonal->id)}}" class="btn btn-primary" title="Order">Order</a>
                               <br><br>
                             </div>
                         </div>

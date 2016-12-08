@@ -68,7 +68,7 @@
                     <input type="text" id="sigInput" name="search" @keyup="searchCake()" v-model="search" class="form-control" placeholder="Search for birthday cake..."><br>
                     <br>
                     <div class="row text-center" >
-                            <button type="button" data-toggle="modal" data-target="#create-item-birthday" class="btn btn-primary" >
+                            <button type="button" onclick="resetFileForm()" data-toggle="modal" data-target="#create-item-birthday" class="btn btn-primary" >
                         Add Cake
                       </button> <br><br>                       
                     </div>
@@ -76,7 +76,7 @@
                         <div class="col-md-3 portfolio-item" v-for="cake in cakes">
                             <img class="img-responsive img-thumbnail" src="{{ asset('images/')}}/@{{cake.image}}"><br>
                             <b>@{{cake.name}}</b> <br>RP. @{{cake.price}} <br><br>
-                            <button class="edit-modal btn btn-warning btn btn-sm" @click.prevent="editItem(cake)">
+                            <button class="edit-modal btn btn-warning btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
                             <span class="glyphicon glyphicon-edit"></span> 
                           </button>
                           <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(cake)">
@@ -112,10 +112,10 @@
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
-                          <h3 class="modal-title" id="myModalLabel">Add New Cake</h3>
+                          <h3 class="modal-title" id="myModalLabel">Add New Birthday Cake</h3>
                         </div>
                         <div class="modal-body">
-                          <form method="post" enctype="multipart/form-data"  onsubmit="resetFileForm()" v-on:submit.prevent="upload" data-parsley-validate="">
+                          <form method="post" enctype="multipart/form-data"  v-on:submit.prevent="upload" data-parsley-validate="">
                             <div class="form-group">
                               <label for="name">Name:</label>                            
                               <input type="text" name="name" class="form-control" v-model="newItem.name" required=""/>  
@@ -125,15 +125,6 @@
                               <label for="description">Description:</label>
                               <textarea name="description" class="form-control" v-model="newItem.description" required="">
                               </textarea>                              
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">Category:</label>
-                                <select name="category" class="form-control" v-model="newItem.category" required="">
-                                  <option>Birthday</option>
-                                  <option>Anniversary</option>
-                                  <option>Seasonal</option>
-                                </select>
                             </div>
 
                             <div class="form-group">
@@ -148,7 +139,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input id="resetFile" type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
+                              <input id="resetFile"  onclick="resetFileForm()" type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
                             </div>
 
                             <div class="form-group">
@@ -170,7 +161,7 @@
                         <h3 class="modal-title" id="myModalLabel">Edit Cake</h3>
                       </div>
                       <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
+                        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
 
                         <div class="form-group">
                               <label for="name">Name:</label>                            
@@ -181,15 +172,6 @@
                               <label for="description">Description:</label>
                               <textarea name="description" class="form-control" v-model="fillItem.description" required="">
                               </textarea>                              
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">Category:</label>
-                                <select name="category" class="form-control" v-model="fillItem.category" required="">
-                                  <option>Birthday</option>
-                                  <option>Anniversary</option>
-                                  <option>Seasonal</option>
-                                </select>
                             </div>
 
                             <div class="form-group">
@@ -204,7 +186,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input id="resetFile" type="file" name="image" class="form-control" @change="onFileChange" />
+                              <input id="resetFile" onclick="resetFileForm()" type="file" name="image" class="form-control" @change="onFileChange" />
                                
                             </div>
                           
@@ -222,7 +204,7 @@
                     <input type="text" id="sigInput" name="search" @keyup="searchCake()" v-model="search" class="form-control" placeholder="Search for anniversary cake..."><br>
                     <br>
                     <div class="row text-center" >
-                            <button type="button" data-toggle="modal" data-target="#create-item-anniversary" class="btn btn-primary" >
+                            <button type="button" onclick="resetFileForm()" data-toggle="modal" data-target="#create-item-anniversary" class="btn btn-primary" >
                         Add Cake
                       </button> <br><br>                       
                     </div>
@@ -230,7 +212,7 @@
                         <div class="col-md-3 portfolio-item" v-for="cake in cakes">
                             <img class="img-responsive img-thumbnail" src="{{ asset('images/')}}/@{{cake.image}}"><br>
                             <b>@{{cake.name}}</b> <br>RP. @{{cake.price}} <br><br>
-                            <button class="edit-modal btn btn-warning btn btn-sm" @click.prevent="editItem(cake)">
+                            <button class="edit-modal btn btn-warning btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
                             <span class="glyphicon glyphicon-edit"></span> 
                           </button>
                           <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(cake)">
@@ -266,10 +248,10 @@
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
-                          <h3 class="modal-title" id="myModalLabel">Add New Cake</h3>
+                          <h3 class="modal-title" id="myModalLabel">Add New Anniversary Cake</h3>
                         </div>
                         <div class="modal-body">
-                          <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="upload" data-parsley-validate="">
+                          <form method="post" enctype="multipart/form-data" v-on:submit.prevent="upload" data-parsley-validate="">
                             <div class="form-group">
                               <label for="name">Name:</label>                            
                               <input type="text" name="name" class="form-control" v-model="newItem.name" required=""/>  
@@ -279,15 +261,6 @@
                               <label for="description">Description:</label>
                               <textarea name="description" class="form-control" v-model="newItem.description" required="">
                               </textarea>                              
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">Category:</label>
-                                <select name="category" class="form-control" v-model="newItem.category" required="">
-                                  <option>Birthday</option>
-                                  <option>Anniversary</option>
-                                  <option>Seasonal</option>
-                                </select>
                             </div>
 
                             <div class="form-group">
@@ -302,7 +275,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input id="resetFile" type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
+                              <input id="resetFile" onclick="resetFileForm()" type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
                             </div>
 
                             <div class="form-group">
@@ -324,7 +297,7 @@
                         <h3 class="modal-title" id="myModalLabel">Edit Cake</h3>
                       </div>
                       <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
+                        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
 
                         <div class="form-group">
                               <label for="name">Name:</label>                            
@@ -335,15 +308,6 @@
                               <label for="description">Description:</label>
                               <textarea name="description" class="form-control" v-model="fillItem.description" required="">
                               </textarea>                              
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">Category:</label>
-                                <select name="category" class="form-control" v-model="fillItem.category" required="">
-                                  <option>Birthday</option>
-                                  <option>Anniversary</option>
-                                  <option>Seasonal</option>
-                                </select>
                             </div>
 
                             <div class="form-group">
@@ -358,7 +322,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input id="resetFile" type="file" name="image" class="form-control"  @change="onFileChange" /> 
+                              <input id="resetFile" onclick="resetFileForm()" type="file" name="image" class="form-control"  @change="onFileChange" /> 
                             </div>
                           
                           <div class="form-group">
@@ -375,7 +339,7 @@
                     <input type="text" id="sigInput" name="search" @keyup="searchCake()" v-model="search" class="form-control" placeholder="Search for seasonal cake..."><br>
                     <br>
                     <div class="row text-center" >
-                            <button type="button" data-toggle="modal" data-target="#create-item-seasonal" class="btn btn-primary" >
+                            <button type="button" onclick="resetFileForm()" data-toggle="modal" data-target="#create-item-seasonal" class="btn btn-primary" >
                         Add Cake
                       </button> <br><br>                       
                     </div>
@@ -383,7 +347,7 @@
                         <div class="col-md-3 portfolio-item" v-for="cake in cakes">
                             <img class="img-responsive img-thumbnail" src="{{ asset('images/')}}/@{{cake.image}}"><br>
                             <b>@{{cake.name}}</b> <br>RP. @{{cake.price}} <br><br>
-                            <button class="edit-modal btn btn-warning btn btn-sm" @click.prevent="editItem(cake)">
+                            <button class="edit-modal btn btn-warning btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
                             <span class="glyphicon glyphicon-edit"></span> 
                           </button>
                           <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(cake)">
@@ -419,10 +383,10 @@
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
-                          <h3 class="modal-title" id="myModalLabel">Add New Cake</h3>
+                          <h3 class="modal-title" id="myModalLabel">Add New Seasonal Cake</h3>
                         </div>
                         <div class="modal-body">
-                          <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="upload" data-parsley-validate="">
+                          <form method="post" enctype="multipart/form-data" v-on:submit.prevent="upload" data-parsley-validate="">
                             <div class="form-group">
                               <label for="name">Name:</label>                            
                               <input type="text" name="name" class="form-control" v-model="newItem.name" required=""/>  
@@ -432,15 +396,6 @@
                               <label for="description">Description:</label>
                               <textarea name="description" class="form-control" v-model="newItem.description" required="">
                               </textarea>                              
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">Category:</label>
-                                <select name="category" class="form-control" v-model="newItem.category" required="">
-                                  <option>Birthday</option>
-                                  <option>Anniversary</option>
-                                  <option>Seasonal</option>
-                                </select>
                             </div>
 
                             <div class="form-group">
@@ -455,7 +410,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input id="resetFile" type="file" name="image" class="form-control"   @change="onFileChange" required="" />  
+                              <input id="resetFile" onclick="resetFileForm()" type="file" name="image" class="form-control"  @change="onFileChange" required="" />  
                             </div>
 
                             <div class="form-group">
@@ -477,7 +432,7 @@
                         <h3 class="modal-title" id="myModalLabel">Edit Cake</h3>
                       </div>
                       <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" onsubmit="resetFileForm()" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
+                        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
 
                         <div class="form-group">
                               <label for="name">Name:</label>                            
@@ -488,15 +443,6 @@
                               <label for="description">Description:</label>
                               <textarea name="description" class="form-control" v-model="fillItem.description" required="">
                               </textarea>                              
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">Category:</label>
-                                <select name="category" class="form-control" v-model="fillItem.category" required="">
-                                  <option>Birthday</option>
-                                  <option>Anniversary</option>
-                                  <option>Seasonal</option>
-                                </select>
                             </div>
 
                             <div class="form-group">
@@ -511,7 +457,7 @@
 
                             <div class="form-group">
                               <label for="image">Image:</label>                            
-                              <input id="resetFile" type="file" name="image" class="form-control"  @change="onFileChange" />
+                              <input id="resetFile" onclick="resetFileForm()" type="file" name="image" class="form-control"  @change="onFileChange" />
                             </div>
                           
                           <div class="form-group">

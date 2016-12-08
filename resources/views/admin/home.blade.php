@@ -21,6 +21,12 @@
                 text-align: left;
                 padding: 8px;
                 }
+                                    tr:nth-child(even){
+                        background-color:#dddddd;
+                    }
+                    tr:nth-child(odd){
+                        background-color:rgba(255, 255, 255,1);
+                    }
 
                 th {
                 background-color: #4CAF50;
@@ -35,57 +41,31 @@
 @section('content')
 
         <section class="text-center" id="inbox" style="background-color:#bfd8d2;">
-        <div class="container">
+        <div class="container" id="inbox">
                 <h2>Inbox Orders</h2><br><br>
 
                 <center><table >
                     <tr>
                         <th>Cake Name</th>
-                        <th>Customer</th>
                         <th>Date Received</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                    <tr bgcolor="#f2f2f2">
-                        <td>Jillian Cake</td>
-                        <td>Jill</td>
-                        <td>29/09/16</td> 
-                        <td>Waiting Confirmation</td>
+                    @foreach($orders as $order)
+                    <tr>
+                        <td>{{$order->cake_name}}</td>
+                        <td>{{date('M j, Y',strtotime($order->created_at))}}</td> 
+                        <td>{{$order->status}}</td>
                         <td>
-                                <a href="order1.html">Details</a>
+                            <a href="order1.html">Details</a>
+                            @if($order->status == "Waiting Confirmation")
                                 <a href="#">Accept</a>
                                 <a href="#">Decline</a>
+                            @endif
+
                         </td>
                     </tr>
-                    <tr>
-                        <td>Jullian Cake</td>
-                        <td>Prince</td>
-                        <td>25/09/16</td>
-                        <td>Accepted</td>
-                        <td><a href="order1.html">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>Madam Cake</td>
-                        <td>Mom</td>
-                        <td>20/09/16</td> 
-                        <td>Declined</td>
-                        <td><a href="order1.html">Details</a></td>
-                    </tr>
-
-                                        <tr>
-                        <td>Jullian Cake</td>
-                        <td>Prince</td>
-                        <td>25/09/16</td>
-                        <td>Accepted</td>
-                        <td><a href="order1.html">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>Madam Cake</td>
-                        <td>Mom</td>
-                        <td>20/09/16</td> 
-                        <td>Declined</td>
-                        <td><a href="order1.html">Details</a></td>
-                    </tr>
+                    @endforeach
                 </table></center>
 
                 <br><br>

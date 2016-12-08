@@ -37,7 +37,7 @@ Route::get('/faq',['as'=>'faq','uses'=>'LandingController@index']);
 
 Route::get('/gallery',['as'=>'gallery.index','uses'=>'GalleryController@index']);
 Route::get('/gallery/{gallery}',['as'=>'gallery.show','uses'=>'GalleryController@show']);
-Route::post('/gallery/{gallery}/order',['as'=>'gallery.order','uses'=>'GalleryController@order']);
+Route::post('/gallery/{gallery}',['as'=>'gallery.order','uses'=>'GalleryController@order']);
 
 
 Route::get('/home', 'OrderController@home');

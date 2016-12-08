@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Faq;
 use App\Cake;
+use App\Profile;
+use App\User;
 
 class LandingController extends Controller
 {
@@ -54,7 +56,10 @@ class LandingController extends Controller
     	//with some faq and some cake
     	$faqs = Faq::all()->take(5);
       $cakes=Cake::orderByRaw('RAND()')->take(3)->get();
-    	return view('welcome')->withFaqs($faqs)->withCakes($cakes);
+      $profile= Profile::find(1);
+      $user=User::find(1);
+      $email=$user->email;
+    	return view('welcome')->withFaqs($faqs)->withCakes($cakes)->withProfile($profile)->withEmail($email);
     }
 
 }

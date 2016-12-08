@@ -30,12 +30,14 @@ class SettingController extends Controller
     	$profile=Profile::find(1);
     	$this->validate($request,array(
             'name' => 'required|max:255',
+            'phone'=>'required|numeric',
             'days' => 'required|integer',
             'bio' => 'required',
             'logo_image'=>'image'
         ));
 
         $profile->name=$request->input('name');
+        $profile->phone=$request->input('phone');
         $profile->days=$request->input('days');
         $profile->bio=$request->input('bio');
 

@@ -17,7 +17,7 @@ new Vue({
     formErrors:{},
     formErrorsUpdate:{},
     newItem : {'name':'','description':'','category':'seasonal','size':'','price':'','image':''},
-    fillItem : {'name':'','description':'','category':'','size':'','price':'','image':'','id':''},
+    fillItem : {'name':'','description':'','category':'seasonal','size':'','price':'','image':'','id':''},
     search : ''
   },
   computed: {
@@ -53,6 +53,7 @@ new Vue({
   },
   methods: {
     onFileChange(e){
+      this.image='';
       var files=e.target.files||e.dataTransfer.files;
       if(!files.length) 
         return;
@@ -87,7 +88,7 @@ new Vue({
       var input = this.newItem;
       this.$http.post('/api/cake',input).then((response) => {
         this.changePage(this.pagination.current_page);
-        this.newItem = {'name':'','description':'','category':'','size':'','price':'','image':''};
+        this.newItem = {'name':'','description':'','category':'seasonal','size':'','price':'','image':''};
         this.fileName='';
         $("#create-item-seasonal").modal('hide');
         toastr.success('Cake Added Successfully.', 'Success Alert', {timeOut: 3000});
@@ -149,7 +150,7 @@ new Vue({
       var input = this.fillItem;
       this.$http.put('/api/cake/'+id,input).then((response) => {
         this.changePage(this.pagination.current_page);
-        this.newItem = {'name':'','description':'','category':'','size':'','price':'','image':'','id':''};
+        this.newItem = {'name':'','description':'','category':'seasonal','size':'','price':'','image':'','id':''};
         $("#edit-seasonal").modal('hide');
         toastr.success('Cake Updated Successfully.', 'Success Alert', {timeOut: 3000});
       }, (response) => {

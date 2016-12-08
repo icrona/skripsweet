@@ -133,7 +133,7 @@
                   <img src="{{asset('images/'.$cake->image)}}" class="img-circle img-thumbnail">
                   <h3>{{$cake->name}}</h3>
                   <p>{{$cake->description}}</p>
-                  <a href="{{route('gallery.show',$cake->id)}}" class="btn btn-primary" title="Order">Order >></a>
+                  <a href="{{route('gallery.show',$cake->id)}}" class="btn btn-primary" title="Order">Order</a>
                 </div>
               </div>
               @endforeach
@@ -151,6 +151,11 @@
         <div class="cta-content">
             <div class="container">
                 <h2>About <i class="fa fa-heart"></i> Us!</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p style="color:white; text-align: justify;">{{$profile->bio}}</p>
+                    </div>
+                </div>             
             </div>
         </div>
     </section>
@@ -177,14 +182,14 @@
                                 <div class="feature-item">
                                     <i class="icon-envelope-open text-primary"></i>
                                     <h3>Email</h3>
-                                    <p class="text-muted">skripsweet@cake.co.id</p>
+                                    <p class="text-muted">{{$email}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="feature-item">
                                     <i class="icon-phone text-primary"></i>
                                     <h3>Phone</h3>
-                                    <p class="text-muted">+62 8752 55555</p>
+                                    <p class="text-muted">{{$profile->phone}}</p>
                                 </div>
                             </div>
                         </div>
@@ -192,15 +197,15 @@
                             <div class="col-md-6">
                                 <div class="feature-item">
                                     <i class="icon-screen-smartphone text-primary"></i>
-                                    <h3>Free to Use Anywhere</h3>
-                                    <p class="text-muted">You can using it from your smartphone!</p>
+                                    <h3>Make Your Own Cake</h3>
+                                    <p class="text-muted">Design Your Own Cake From Android Apps!</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="feature-item">
                                     <i class="icon-heart text-primary"></i>
                                     <h3>Quality Service</h3>
-                                    <p class="text-muted">We serve you better!</p>
+                                    <p class="text-muted">Enjoy Our Beautiful Cake Design</p>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +252,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h2 class="section-heading">Discover what all the buzz is about!</h2>
-                    <p>Our app is available on any mobile device! Download now to get started!</p>
+                    <p>Our app is available on android device! Download now to get started!</p>
                     <div class="badges">
                         <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
                     </div>
@@ -255,4 +260,6 @@
             </div>
         </div>
     </section>
+
+    
 @endsection

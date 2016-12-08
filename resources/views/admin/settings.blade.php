@@ -120,6 +120,16 @@ table {
 
                 <div class="row">
                   <div class="col-md-3 col-md-offset-2">
+                    {{Form::label('phone','Phone')}}
+                  </div>                 
+                  <div class="col-md-5">
+                    {{Form::text('phone',null,array('class'=>'form-control','required'=>'','maxlength'=>'255','data-parsley-type'=>'digits'))}}
+                  </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-md-3 col-md-offset-2">
                     {{Form::label('logo_image','Logo Image')}}
                   </div>                 
                   <div class="col-md-5">
@@ -148,7 +158,7 @@ table {
                 <br><br>
                 <div class="row">        
                   <div class="col-md-offset-5 col-md-2 text-center">
-                    {{Form::submit('Save Changes',['class' =>'btn btn-success btn-block'])}}
+                    {{Form::submit('Save Changes',['class' =>'btn btn-success btn-block btn-submit'])}}
                   </div>
                 </div>
                 {!! Form::close() !!}
@@ -190,7 +200,7 @@ table {
                 
 
                 <div class="col-md-offset-5 col-md-2 text-center">
-                    <button type="submit" class="btn btn-danger">Change Password</button>
+                    <button type="submit" class="btn btn-warning btn-change">Change Password</button>
                 </div>
               </form>
                 </div> 
@@ -322,6 +332,48 @@ table {
 
     </section>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    {{ Html::script('/js/parsley.min.js') }}
+    {{ Html::script('/js/sweetalert.min.js') }}
+    <script type="text/javascript">
+        
+      $('.btn-submit').on('click',function(e){
+          e.preventDefault();
+          var form = $(this).parents('form');
+          swal({
+              title: "Are you sure?",
+              text: "You will update your profile",
+              type: "info",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes",
+              closeOnConfirm: true,
+          }, function(isConfirm){
+              if (isConfirm) form.submit();
+              swal.close();
+          });
+      });
+
+        $('.btn-change').on('click',function(e){
+          e.preventDefault();
+          var form = $(this).parents('form');
+          swal({
+              title: "Are you sure?",
+              text: "You will be changed",
+              type: "info",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes",
+              closeOnConfirm: true,
+          }, function(isConfirm){
+              if (isConfirm) form.submit();
+              swal.close();
+          });
+      });
+    </script>
+
+    
 
 
 @endsection
+
