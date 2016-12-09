@@ -52,102 +52,62 @@
                 <form>
                     <div class="form-group">
                       <label for="sel1" align="center">Sort By :</label>
-                      <select class="form-control" id="sel1">
-                        <option>Status</option>
-                        <option>Deadline</option>
+                      <select class="form-control" id="sel1" v-model="sortBy" @change="sort(sortBy)">
+                        <option value="date">Date Received</option>
+                        <option value="status">Status</option>
+                        <option value="deadline">Deadline</option>
                       </select>
                       
                     </div>
                   </form>
                 
                 
-                <table id="ordertable" class="display">
+                <table id="orders" class="display">
                     <tr>
-                        <th>No.</th>
-                        <th>Image</th>
                         <th>Cake Name</th>
+                        <th>Date Received</th>
                         <th>Deadline</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="../startbootstrap-new-age-gh-pages/cake1.jpg" width="100"></td>
-                        <td>Jillian Cake</td>
-                        <td>02/10/16</td>
-                        <td>Waiting Confirmation</td>
+                    <tr v-for="order in orders">
+                        <td>@{{order.cake_name}}</td>
+                        <td>@{{order.created_at}}</td>
+                        <td>@{{order.date}}</td>
+                        <td>@{{order.status}}</td>
                         <td>
-                                <a href="order1.html">Details</a>
-                                <a href="#">Accept</a>
-                                <a href="#">Decline</a>
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="../startbootstrap-new-age-gh-pages/cake2.jpg" width="100"></td>
-                        <td>Jullian Cake</td>
-                        <td>28/09/16</td>
-                        <td>Accepted</td>
-                        <td><a href="order1.html">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="../startbootstrap-new-age-gh-pages/cake3.jpg" width="100"></td>
-                        <td>Madam Cake</td>
-                        <td>21/09/16</td>
-                        <td>Declined</td>
-                        <td><a href="order1.html">Details</a></td>
-                    </tr>
-                                        <tr>
-                        <td>2</td>
-                        <td><img src="../startbootstrap-new-age-gh-pages/cake2.jpg" width="100"></td>
-                        <td>Jullian Cake</td>
-                        <td>28/09/16</td>
-                        <td>Accepted</td>
-                        <td><a href="order1.html">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="../startbootstrap-new-age-gh-pages/cake3.jpg" width="100"></td>
-                        <td>Madam Cake</td>
-                        <td>21/09/16</td>
-                        <td>Declined</td>
-                        <td><a href="order1.html">Details</a></td>
+                                <a href={{url('/orders/')}}@{{order.id}}>Details</a>
+                                <span v-if="checkStatus(order.status)">
+                                    <a @click.prevent=updateStatus("Accepted",order) href="#">Accept</a>
+                                    <a @click.prevent=updateStatus("Declined",order) href="#">Decline</a>
+                                </span>
+                        </td>       
                     </tr>
                 </table>
                 <center>
+
             </div>
 
-            <br><br>
-            <div class="row text-center">
-                            <div class="col-lg-12">
-                                <ul class="pagination">
-                                    <li>
-                                        <a href="#">&laquo;</a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">&raquo;</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>  
-            
-            
+            <br>
+            <nav class="text-center">
+                    <ul class="pagination">
+                      <li v-if="pagination.current_page > 1">
+                        <a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">
+                          <span aria-hidden="true">«</span>
+                        </a>
+                      </li>
+                      <li v-for="page in pagesNumber" v-bind:class="[ page == isActived ? 'active' : '']">
+                        <a href="#" @click.prevent="changePage(page)">
+                          @{{ page }}
+                        </a>
+                      </li>
+                      <li v-if="pagination.current_page < pagination.last_page">
+                        <a href="#" aria-label="Next" @click.prevent="changePage(pagination.current_page + 1)">
+                          <span aria-hidden="true">»</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>                
     </section>
+
 @endsection

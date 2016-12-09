@@ -103,7 +103,7 @@
 
                 <div class="row dateInput">
                     <div class="col-md-2 col-md-offset-3">
-                        {{Form::label('date',"Date:")}}
+                        {{Form::label('date',"Delivery Date:")}}
                         <p style="color: red; font-size:12px;">Minimum {{$days}} day(s) from today</p>
                     </div>
                     <div class="col-md-4">
@@ -134,7 +134,7 @@
 
                 <div class="row">        
                   <div class="col-md-offset-5 col-md-2 text-center">
-                  {{Form::submit('Order Now',['class' =>'btn btn-success btn-block btn-order'])}}
+                  {{Form::submit('Order Now',['class' =>'btn btn-success btn-block btn-submit'])}}
                   </div>
                 </div>
 
@@ -147,9 +147,43 @@
     {{ Html::script('/js/sweetalert.min.js') }}
 
     <script type="text/javascript">
-        $('form').parsley({
-            excluded: '.dateInput input'
-        });
+        window.ParsleyConfig = { excluded: "input[type=date]" };
+        $('.btn-submit').on('click',function(e){
+          e.preventDefault();
+          var name=$('#name').val();
+          var phone=$('#phone').val();
+          var email=$('#email').val();
+          var date=$('#date').val();
+          var address=$('#address').val();
+          var notes=$('#notes').val();
+          if(notes==''){
+            notes='-';
+          }
+
+          var form = $(this).parents('form');
+          form.parsley().validate();
+          if(form.parsley().isValid()){
+              swal({
+                  title: "Your Data Confirmation",
+                  text: "Name: "+name+"<br>"+"Phone: "+phone+"<br>"+"Email: "+email+"<br>"+"Delivery Date: "+date+"<br>"+"Address: "+address+"<br>"+"Notes: "+notes+"<br>",html:true,
+                  type: "info",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes",
+                  closeOnConfirm: false,
+              }, function(isConfirm){
+                  if (isConfirm) {
+                    swal("Thank You For Your Order","Baker Will Contact You Soon", "success");
+
+                        setTimeout(function() {
+                            form.submit();
+                        }, 2000);
+                    
+                  }
+              });
+          }
+
+      });
     </script>
 
 @endsection

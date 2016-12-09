@@ -14,6 +14,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
     {{ Html::script('/js/userfaq.js') }}
+        <script type="text/javascript" src="/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/js/parsley.min.js"></script>
     
 <script>
         @if(Session::has('message'))

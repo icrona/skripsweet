@@ -43,30 +43,30 @@
         <section class="text-center" id="inbox" style="background-color:#bfd8d2;">
         <div class="container" id="inbox">
                 <h2>Inbox Orders</h2><br><br>
-
-                <center><table >
+                <center>
+                <table class="display">
                     <tr>
                         <th>Cake Name</th>
                         <th>Date Received</th>
+                        <th>Deadline</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                    @foreach($orders as $order)
-                    <tr>
-                        <td>{{$order->cake_name}}</td>
-                        <td>{{date('M j, Y',strtotime($order->created_at))}}</td> 
-                        <td>{{$order->status}}</td>
+                    <tr v-for="order in orders">
+                        <td>@{{order.cake_name}}</td>
+                        <td>@{{order.created_at}}</td>
+                        <td>@{{order.date}}</td>
+                        <td>@{{order.status}}</td>
                         <td>
-                            <a href="order1.html">Details</a>
-                            @if($order->status == "Waiting Confirmation")
-                                <a href="#">Accept</a>
-                                <a href="#">Decline</a>
-                            @endif
-
-                        </td>
+                                <a href={{url('/orders/')}}@{{order.id}}>Details</a>
+                                <span v-if="checkStatus(order.status)">
+                                    <a @click.prevent=updateStatus("Accepted",order) href="#">Accept</a>
+                                    <a @click.prevent=updateStatus("Declined",order) href="#">Decline</a>
+                                </span>
+                        </td>       
                     </tr>
-                    @endforeach
-                </table></center>
+                </table>
+                </center>
 
                 <br><br>
                 <h3 style="text-align: center;"><a href={{url('orders')}}>More</a></h3>

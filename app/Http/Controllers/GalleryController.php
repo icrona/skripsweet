@@ -51,12 +51,6 @@ class GalleryController extends Controller
         $order->status="Waiting Confirmation";
         $order->save();
 
-
-        $notification = array(
-            'message' => 'Thank Your For Your Order', 
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('gallery.show',$cake->id)->with($notification);
+        return redirect()->route('welcome');
     }
 }

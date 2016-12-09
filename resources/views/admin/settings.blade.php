@@ -271,19 +271,19 @@ table {
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
-          <h3 class="modal-title" id="myModalLabel">Create New Post</h3>
+          <h3 class="modal-title" id="myModalLabel">Add New Question</h3>
         </div>
         <div class="modal-body">
           <form method="post" enctype="multipart/form-data" v-on:submit.prevent="createItem" data-parsley-validate="">
             <div class="form-group">
-              <label for="Question">Title:</label>
+              <label for="Question">Question:</label>
               
               <textarea name="question" class="form-control" v-model="newItem.question" required=""> 
               </textarea>  
               
             </div>
             <div class="form-group">
-              <label for="Answer">Description:</label>
+              <label for="Answer">Answer:</label>
               <textarea name="answer" class="form-control" v-model="newItem.answer" required="">
               </textarea>
               
@@ -340,7 +340,9 @@ table {
       $('.btn-submit').on('click',function(e){
           e.preventDefault();
           var form = $(this).parents('form');
-          swal({
+          form.parsley().validate();
+          if(form.parsley().isValid()){
+            swal({
               title: "Are you sure?",
               text: "You will update your profile",
               type: "info",
@@ -350,25 +352,29 @@ table {
               closeOnConfirm: true,
           }, function(isConfirm){
               if (isConfirm) form.submit();
-              swal.close();
           });
+          }
+
       });
 
         $('.btn-change').on('click',function(e){
           e.preventDefault();
           var form = $(this).parents('form');
-          swal({
-              title: "Are you sure?",
-              text: "You will be changed",
-              type: "info",
-              showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
-              confirmButtonText: "Yes",
-              closeOnConfirm: true,
-          }, function(isConfirm){
-              if (isConfirm) form.submit();
-              swal.close();
-          });
+          form.parsley().validate();
+          if(form.parsley().isValid()){
+            swal({
+                title: "Are you sure?",
+                text: "You will be changed",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                closeOnConfirm: true,
+            }, function(isConfirm){
+                if (isConfirm) form.submit();
+            });
+          }
+
       });
     </script>
 

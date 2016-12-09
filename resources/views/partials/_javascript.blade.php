@@ -10,9 +10,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+            {{ Html::script('js/new-age.min.js') }}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
     <script type="text/javascript" src="/js/faq.js"></script>
+    <script type="text/javascript" src="/js/orders.js"></script>
+    <script type="text/javascript" src="/js/inbox.js"></script>
     
     <script type="text/javascript" src="/js/cake-birthday.js"></script>
     <script type="text/javascript" src="/js/cake-anniversary.js"></script>
@@ -20,8 +24,6 @@
 
     <script type="text/javascript" src="/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="/js/parsley.min.js"></script>
-
-    {{ Html::script('js/new-age.min.js') }}
 
     
     <script>

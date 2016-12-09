@@ -40,11 +40,14 @@ Route::get('/gallery/{gallery}',['as'=>'gallery.show','uses'=>'GalleryController
 Route::post('/gallery/{gallery}',['as'=>'gallery.order','uses'=>'GalleryController@order']);
 
 
-Route::get('/home', 'OrderController@home');
-Route::get('/orders', 'OrderController@orders');
-Route::get('/report', 'OrderController@report');
+Route::get('/home', 'AdminController@home');
+Route::get('/orders', 'AdminController@orders');
+Route::get('/orders{id}',['as'=>'orders.details','uses'=>'AdminController@details']);
+Route::get('/orders{id}/{status}',['as'=>'orders.status','uses'=>'AdminController@status']);
+Route::get('/orderdownloadpdf{id}',array('as'=>'pdfdetails','uses'=>'AdminController@pdfdetails'));
 
-Route::get('/manage','ManageController@index');
+Route::get('/report', 'AdminController@report');
+Route::get('/manage','AdminController@manage');
 
 Route::get('/signatures','CakeController@index');
 
