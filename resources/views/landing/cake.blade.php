@@ -171,14 +171,11 @@
                   confirmButtonColor: "#DD6B55",
                   confirmButtonText: "Yes",
                   closeOnConfirm: false,
+                  showLoaderOnConfirm:true
               }, function(isConfirm){
                   if (isConfirm) {
-                    swal("Thank You For Your Order","Baker Will Contact You Soon", "success");
-
-                        setTimeout(function() {
-                            form.submit();
-                        }, 2000);
-                    
+                    form.submit();
+                    swal("Thank You For Your Order","Baker Will Contact You Soon", "success");                   
                   }
               });
           }

@@ -33,6 +33,7 @@ Route::post('cake/upload/edit{edit}','CakeController@uploadEdit');
 
 Route::get('inbox','OrderController@showInbox');
 Route::get('orders','OrderController@showOrders');
+Route::get('details{id}','OrderController@showDetails');
 Route::get('orders/status','OrderController@sortStatus');
 Route::get('orders/deadline','OrderController@sortDeadline');
 Route::put('orders{id}','OrderController@updateStatus');

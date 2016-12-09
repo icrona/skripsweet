@@ -81,6 +81,14 @@ class OrderController extends Controller
         return response()->json($response);
     }
 
+    public function showDetails($id){
+        $order=Order::find($id);
+        $response=[
+            'data'=>$order
+        ];
+        return response()->json($response);
+    }
+
 
     public function updateStatus(Request $request,$id)
     {

@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Cake;
 use App\Profile;
 use App\Order;
+use Mail;
+use App\User;
 
 class GalleryController extends Controller
 {
@@ -51,6 +53,23 @@ class GalleryController extends Controller
         $order->status="Waiting Confirmation";
         $order->save();
 
+        $user=User::find(1);
+        $data=array(
+            'email'=>$user->email,
+            'subject'=>'Congratulations! You Got New Order!',
+            'order_id'=>$order->id,
+            'customer_name'=>$order->name,
+            'customer_email'=>$order->email,
+            'customer_phone'=>$order->phone,
+            'delivery_date'=>$order->date,
+            'cake_name'=>$order->cake_name,
+            'cake_price'=>$order->cake_price,
+            );
+        Mail::send('email.order',$data,function($message) use($data){
+            $message->from('skripsweetcake@gmail.com');
+            $message->to($data['email']);
+            $message->subject($data['subject']);
+        });
         return redirect()->route('welcome');
     }
 }

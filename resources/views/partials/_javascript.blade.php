@@ -17,6 +17,7 @@
     <script type="text/javascript" src="/js/faq.js"></script>
     <script type="text/javascript" src="/js/orders.js"></script>
     <script type="text/javascript" src="/js/inbox.js"></script>
+    <script type="text/javascript" src="/js/details.js"></script>
     
     <script type="text/javascript" src="/js/cake-birthday.js"></script>
     <script type="text/javascript" src="/js/cake-anniversary.js"></script>
