@@ -50,9 +50,38 @@ class AdminController extends Controller
             $order->time=$time;
             view()->share('order',$order);
             $pdf = PDF::loadView('pdf.details');
-            $pdfname='order'+$id+"pdf";
-            return $pdf->download('order.pdf');
+            return $pdf->download('order_details.pdf');
         }
+    }
+
+    public function pdfReport(Request $request){        
+        if($request->has('download')){
+            $from=$request->from;
+            $to=$request->to;
+
+            $reports = Order::where([
+                ['status','=','Accepted'],
+                ['date','>=',$from],
+                ['date','<=',$to]    
+            ])->latest()->get();
+
+            $total_report=$reports->sum('cake_price');
+            $time_report=Carbon::now();
+
+            view()->share('reports',$reports);
+            view()->share('total_report',$total_report);
+            view()->share('time_report',$time_report);
+            view()->share('from',$from);
+            view()->share('to',$to);
+
+            $pdf = PDF::loadView('pdf.report');
+            return $pdf->download('report.pdf');
+        }
+    }
+
+    public function settings()
+    {  
+        return view('admin.settings');
     }
 
 }

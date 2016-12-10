@@ -15,7 +15,7 @@ new Vue({
     offset: 4,
     formErrors:{},
     formErrorsUpdate:{},
-    fillItem : {'id':'','name':'','phone':'','email':'','date':'','address':'','notes':'','cake_name':'','cake_description':'','cake_size':'','cake_price':'','cake_image':'','status':''}
+    fillItem : {'id':'','name':'','phone':'','email':'','address':'','notes':'','cake_name':'','cake_description':'','cake_size':'','cake_price':'','cake_image':'','status':''}
   },
     
   computed: {
@@ -62,7 +62,6 @@ new Vue({
       this.fillItem.name = orders.name;
       this.fillItem.phone = orders.phone;
       this.fillItem.email = orders.email;
-      this.fillItem.date = orders.date;
       this.fillItem.address = orders.address;
       this.fillItem.cake_name = orders.cake_name;
       this.fillItem.cake_description = orders.cake_description;
@@ -102,14 +101,19 @@ new Vue({
     },
     changePage: function(page) {
       this.pagination.current_page = page;
-      this.getVueItems(page);
-    },
-    sort: function() {
-      if(this.sortBy=="date"){
-        this.getVueItems(1);
+      if(this.sortBy=='date'){
+        this.getVueItems(page);
       }
       else{
-      this.$http.get('/api/orders/'+this.sortBy).then((response) => {
+        this.sort(page);
+      }     
+    },
+    sort: function(page) {
+      if(this.sortBy=="date"){
+        this.getVueItems(page);
+      }
+      else{
+      this.$http.get('/api/orders/'+this.sortBy+'?page='+page).then((response) => {
         this.$set('orders', response.data.data.data);
         this.$set('pagination', response.data.pagination);
       });

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cake;
-use App\File;
 use App\Http\Requests;
 use Validator;
 use Response;

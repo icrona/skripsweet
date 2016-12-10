@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PDF Download</title>
+	<title>Order Details Download</title>
 </head>
 <body>
 			<h1>Order Details</h1>

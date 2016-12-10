@@ -5,7 +5,7 @@ new Vue({
   props:['details'],
   data :{
     orders: [],
-    fillItem : {'id':'','name':'','phone':'','email':'','date':'','address':'','notes':'','cake_name':'','cake_description':'','cake_size':'','cake_price':'','cake_image':'','status':''},
+    fillItem : {'id':'','name':'','phone':'','email':'','address':'','notes':'','cake_name':'','cake_description':'','cake_size':'','cake_price':'','cake_image':'','status':''},
     id:[]
   },
   ready: function() {
@@ -28,7 +28,6 @@ new Vue({
       this.fillItem.name = orders.name;
       this.fillItem.phone = orders.phone;
       this.fillItem.email = orders.email;
-      this.fillItem.date = orders.date;
       this.fillItem.address = orders.address;
       this.fillItem.cake_name = orders.cake_name;
       this.fillItem.cake_description = orders.cake_description;

@@ -19,16 +19,9 @@
 
 @section('content')
 
-        <section id="vieworder" class="text-center" >
+        <section id="viewreport" class="text-center" >
         <div class="container"><center>
                 <h2>Report</h2><br>
-                <style>
-                    
-                </style>
-                    
-                      Period: <input type="date" name="field1" id="field1"/> - <input type="date" name="field2" id="field2"/> <a href="#" data-toggle="modal" class="btn btn-primary">OK</a> <a href="download.html" class="btn btn-link"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a><br/><br/>
-                    
-                
                 <style>
                     table {
                         border-collapse: collapse;
@@ -52,40 +45,67 @@
                     background-color: #4CAF50;
                     color: white;
                     }
+                            a{
+                        color:#df744a;
+                    }
                 </style>
+                    <form method="POST" action="{{ route('pdfreport',['download'=>'pdf']) }}">
+                    Period: 
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                      <input type="date" v-model="period.from" name="from" @change="getVueItems(1)" required="" min=@{{first}} /> 
+                      - 
+                      <input type="date" v-model="period.to" name="to" @change="getVueItems(1)" required="" max=@{{last}} />
+
+                      <button class="btn btn-link" role="submit">
+                          <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                      </button>            
+                    </form>
+
+                      <br>
+
+                      <h5>Total Price : Rp. @{{total}}</h5>
+                    <br><br>
+                
+                
                 <table id="ordertable" class="display">
                     <tr>
                         <th>Delivery Date</th>
                         <th>Customer Name</th>
                         <th>Cake Name</th>
-                        <th>Flavour</th>
                         <th>Price</th>
+                        <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>02/10/2016</td>
-                        <td>Jillian</td> 
-                        <td>Jillian Cake</td>
-                        <td>Chocolate</td>
-                        <td>250000</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>28/09/2016</td>
-                        <td>Prince</td>
-                        <td>Jullian Cake</td>
-                        <td>Red Velvet</td>
-                        <td>400000</td>
-                    </tr>
-                    <tr>
-                        <td>21/09/2016</td>
-                        <td>Mom</td>
-                        <td>Madam Cake</td>
-                        <td>Green Tea</td>
-                        <td>200000</td>
+
+                    <tr v-for="order in orders">
+                        <td>@{{order.date}}</td>
+                        <td>@{{order.name}}</td> 
+                        <td>@{{order.cake_name}}</td>
+                        <td>Rp. @{{order.cake_price}}</td>
+                        <td><a href={{url('/orders/')}}@{{order.id}}>Details</a></td>                     
                     </tr>
                 </table>
                 <center>
-            </div>  
+            </div>
+
+                        <nav class="text-center">
+                    <ul class="pagination">
+                      <li v-if="pagination.current_page > 1">
+                        <a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">
+                          <span aria-hidden="true">«</span>
+                        </a>
+                      </li>
+                      <li v-for="page in pagesNumber" v-bind:class="[ page == isActived ? 'active' : '']">
+                        <a href="#" @click.prevent="changePage(page)">
+                          @{{ page }}
+                        </a>
+                      </li>
+                      <li v-if="pagination.current_page < pagination.last_page">
+                        <a href="#" aria-label="Next" @click.prevent="changePage(pagination.current_page + 1)">
+                          <span aria-hidden="true">»</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>   
             
     </section>
 @endsection

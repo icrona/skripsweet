@@ -17,6 +17,12 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
+Route::get('/settings',['as'=>'settings.getProfile','uses'=>'SettingController@getProfile']);
+Route::post('/settings/logo','SettingController@uploadLogo');
+Route::put('/settings',['as'=>'settings.updateProfile','uses'=>'SettingController@updateProfile']);
+Route::post('/settings/checkPassword',['as'=>'settings.check','uses'=>'SettingController@checkPassword']);
+Route::post('/settings/changePassword',['as'=>'settings.change','uses'=>'SettingController@changePassword']);
+
 Route::get('/faqadmin/search', 'FaqController@searchFaq');
 Route::resource('faqadmin','FaqController');
 
@@ -37,6 +43,9 @@ Route::get('details{id}','OrderController@showDetails');
 Route::get('orders/status','OrderController@sortStatus');
 Route::get('orders/deadline','OrderController@sortDeadline');
 Route::put('orders{id}','OrderController@updateStatus');
+
+Route::get('report','OrderController@getInitial');
+Route::post('report','OrderController@filterReport');
 
 Route::get('cake/birthday/search','CakeController@birthdaySearch');
 Route::get('cake/anniversary/search','CakeController@anniversarySearch');

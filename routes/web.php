@@ -45,16 +45,14 @@ Route::get('/orders', 'AdminController@orders');
 Route::get('/orders{id}',['as'=>'orders.details','uses'=>'AdminController@details']);
 Route::get('/orders{id}/{status}',['as'=>'orders.status','uses'=>'AdminController@status']);
 Route::get('/orderdownloadpdf{id}',array('as'=>'pdfdetails','uses'=>'AdminController@pdfdetails'));
+Route::post('/reportdownloadpdf',array('as'=>'pdfreport','uses'=>'AdminController@pdfreport'));
 
 Route::get('/report', 'AdminController@report');
 Route::get('/manage','AdminController@manage');
 
 Route::get('/signatures','CakeController@index');
 
-Route::get('/settings',['as'=>'settings','uses'=>'SettingController@index']);
-
-Route::put('/settings',['as'=>'settings.profile','uses'=>'SettingController@profile']);
-Route::post('/settings/password',['as'=>'settings.password','uses'=>'SettingController@changePassword']);
+Route::get('/settings',['as'=>'settings','uses'=>'AdminController@settings']);
 
 Route::get('/logout', 'Auth\LoginController@logout');
 

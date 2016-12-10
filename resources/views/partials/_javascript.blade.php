@@ -18,6 +18,9 @@
     <script type="text/javascript" src="/js/orders.js"></script>
     <script type="text/javascript" src="/js/inbox.js"></script>
     <script type="text/javascript" src="/js/details.js"></script>
+    <script type="text/javascript" src="/js/profile.js"></script>
+    <script type="text/javascript" src="/js/password.js"></script>
+    <script type="text/javascript" src="/js/report.js"></script>
     
     <script type="text/javascript" src="/js/cake-birthday.js"></script>
     <script type="text/javascript" src="/js/cake-anniversary.js"></script>

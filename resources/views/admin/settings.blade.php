@@ -92,10 +92,10 @@ table {
         
             <ul class="nav nav-pills nav-justified">
                 <li class="active">
-                    <a href="#1" data-toggle="tab">Profile</a>
+                    <a href="#profile" data-toggle="tab">Profile</a>
                 </li>
                 <li>
-                    <a href="#2" data-toggle="tab">Account</a>
+                    <a href="#password" data-toggle="tab">Account</a>
                 </li>
                 <li>
                     <a href="#manage-faq" data-toggle="tab">FAQ</a>
@@ -103,71 +103,72 @@ table {
             </ul>
             
             <div class="tab-content clearfix">
-                <div class="tab-pane active" id="1">
+                <div class="tab-pane active" id="profile">
                 <h3 style="text-align:center;">Edit Profile</h3>
                 <br>
-                {!!Form::model($profile,['route'=>'settings.profile','method'=>'PUT','data-parsley-validate'=>'','class'=>'edit_profile','files'=>'true'])!!}
+                <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit()" data-parsley-validate="">
                 
                 <div class="row">
                   <div class="col-md-3 col-md-offset-2">
-                    {{Form::label('name','Name')}}
+                    <label for="name">Name:</label>  
                   </div>                 
                   <div class="col-md-5">
-                    {{Form::text('name',null,array('class'=>'form-control','required'=>'','maxlength'=>'255'))}}
+                    <input type="text" name="name" class="form-control" v-model="profile.name" required="" maxlength="255" />
                   </div>
                 </div>
                 <br>
 
                 <div class="row">
                   <div class="col-md-3 col-md-offset-2">
-                    {{Form::label('phone','Phone')}}
+                    <label for="phone">Phone:</label> 
                   </div>                 
                   <div class="col-md-5">
-                    {{Form::text('phone',null,array('class'=>'form-control','required'=>'','maxlength'=>'255','data-parsley-type'=>'digits'))}}
+                    <input type="text" name="phone" class="form-control" v-model="profile.phone" required="" maxlength="255" data-parsley-type="digits"/>
                   </div>
                 </div>
                 <br>
 
                 <div class="row">
                   <div class="col-md-3 col-md-offset-2">
-                    {{Form::label('logo_image','Logo Image')}}
+                    <label for="logo_image">Logo Image:</label>
                   </div>                 
                   <div class="col-md-5">
-                     {{Form::file('logo_image')}}
+                    <input id="resetFile" onclick="resetFileForm()" type="file" name="image" class="form-control" @change="onFileChange" />
                      <label style="color:red">*File must be .png</label>
                   </div>
                   <br><br><br>
                 </div>
                 <div class="row">
                   <div class="col-md-3 col-md-offset-2">
-                    {{Form::label('days','Minimum Order Days')}}
+                    <label for="days">Minimum Order Days:</label>
                   </div>                 
                   <div class="col-md-5">
-                    {{Form::text('days',null,array('class'=>'form-control','required'=>'','data-parsley-type'=>'digits'))}}
+                    <input type="text" name="days" class="form-control" v-model="profile.days" required="" data-parsley-type="digits"/>
                   </div>
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-3 col-md-offset-2">
-                    {{Form::label('bio','Biodata')}}
+                    <label for="bio">Biodata</label>
                   </div>                 
                   <div class="col-md-5">
-                    {{Form::textarea('bio',null,array('class'=>'form-control','required'=>''))}}
+                    <textarea name="bio" class="form-control" v-model="profile.bio" required="">
+                    </textarea> 
                   </div>
                 </div>
                 <br><br>
                 <div class="row">        
                   <div class="col-md-offset-5 col-md-2 text-center">
-                    {{Form::submit('Save Changes',['class' =>'btn btn-success btn-block btn-submit'])}}
+                    <button type="submit" class="btn btn-success btn-block btn-submit">Save Changes</button>
                   </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
                 </div>
                 
-                <div class="tab-pane" id="2">
+                <div class="tab-pane" id="password">
                 <h3 style="text-align:center;">Security</h3>
                 <br>
-                <form id="form-change-password" data-parsley-validate="" role="form" method="POST" action="{{ url('/settings/password') }}" novalidate class="form-horizontal">
+                <form id="form-change-password" data-parsley-validate="" role="form" method="POST" v-on:submit.prevent="checkPassword()" novalidate class="form-horizontal">
 
                 <div class="col-md-2 col-md-offset-3">             
                   <label for="current-password">Current Password</label>
@@ -175,7 +176,7 @@ table {
                 <div class="col-md-4">
                     <div class="form-group">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
-                      <input type="password" class="form-control" required="" id="current-password" name="current-password" placeholder="Current Password">
+                      <input type="password" class="form-control" v-model="password.current_password" required="" id="current-password" name="current-password" placeholder="Current Password">
                     </div>
                 </div>
 
@@ -184,7 +185,7 @@ table {
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
-                    <input type="password" class="form-control" required="" minlength="6" data-parsley-equalto="#password_confirmation" id="password" name="password" placeholder="New Password">
+                    <input type="password" class="form-control" required="" minlength="6" data-parsley-equalto="#password_confirmation" id="new_password" name="password" placeholder="New Password" v-model="password.new_password">
                   </div>
                 </div>
 
@@ -193,7 +194,7 @@ table {
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
-                    <input type="password" class="form-control" required="" minlength="6" data-parsley-equalto="#password" id="password_confirmation" name="password_confirmation" placeholder="Confirmation Password">
+                    <input type="password" class="form-control" required="" minlength="6" data-parsley-equalto="#new_password" id="password_confirmation" name="password_confirmation" placeholder="Confirmation Password">
                   </div>
                   <br>
                 </div>
@@ -336,45 +337,18 @@ table {
     {{ Html::script('/js/parsley.min.js') }}
     {{ Html::script('/js/sweetalert.min.js') }}
     <script type="text/javascript">
-        
       $('.btn-submit').on('click',function(e){
-          e.preventDefault();
           var form = $(this).parents('form');
           form.parsley().validate();
-          if(form.parsley().isValid()){
-            swal({
-              title: "Are you sure?",
-              text: "You will update your profile",
-              type: "info",
-              showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
-              confirmButtonText: "Yes",
-              closeOnConfirm: true,
-          }, function(isConfirm){
-              if (isConfirm) form.submit();
-          });
-          }
-
+          var isValid=form.parsley().isValid();
+          window.profile=isValid;
       });
 
-        $('.btn-change').on('click',function(e){
-          e.preventDefault();
+      $('.btn-change').on('click',function(e){
           var form = $(this).parents('form');
           form.parsley().validate();
-          if(form.parsley().isValid()){
-            swal({
-                title: "Are you sure?",
-                text: "You will be changed",
-                type: "info",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes",
-                closeOnConfirm: true,
-            }, function(isConfirm){
-                if (isConfirm) form.submit();
-            });
-          }
-
+          var isValid=form.parsley().isValid();
+          window.password=isValid;
       });
     </script>
 
