@@ -193,7 +193,6 @@ class CakeController extends Controller
     
     public function destroy($id)
     {
-
         Cake::find($id)->delete();
         return response()->json(['done']);
     }

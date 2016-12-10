@@ -21,7 +21,12 @@
     <script type="text/javascript" src="/js/profile.js"></script>
     <script type="text/javascript" src="/js/password.js"></script>
     <script type="text/javascript" src="/js/report.js"></script>
-    
+
+    <script type="text/javascript" src="/js/flavour.js"></script>
+    <script type="text/javascript" src="/js/size.js"></script>
+    <script type="text/javascript" src="/js/shape.js"></script>
+    <script type="text/javascript" src="/js/frosting.js"></script>
+
     <script type="text/javascript" src="/js/cake-birthday.js"></script>
     <script type="text/javascript" src="/js/cake-anniversary.js"></script>
     <script type="text/javascript" src="/js/cake-seasonal.js"></script>

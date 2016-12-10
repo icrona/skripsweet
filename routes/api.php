@@ -51,5 +51,22 @@ Route::get('cake/birthday/search','CakeController@birthdaySearch');
 Route::get('cake/anniversary/search','CakeController@anniversarySearch');
 Route::get('cake/seasonal/search','CakeController@seasonalSearch');
 
+Route::get('manage/flavour','ManageController@showFlavour');
+Route::post('manage/flavour','ManageController@addFlavour');
+Route::put('manage/flavour{id}','ManageController@editFlavour');
+Route::delete('manage/flavour{id}','ManageController@deleteFlavour');
+
+Route::get('manage/size','ManageController@showSize');
+Route::post('manage/size','ManageController@addSize');
+Route::put('manage/size{id}','ManageController@editSize');
+Route::delete('manage/size{id}','ManageController@deleteSize');
+
+Route::get('manage/shape','ManageController@showShape');
+Route::put('manage/shape{id}','ManageController@editShape');
+
+Route::get('manage/frosting','ManageController@showFrosting');
+Route::put('manage/frosting{id}','ManageController@editFrosting');
+
+
 
 
