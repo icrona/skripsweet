@@ -76,6 +76,20 @@ Route::put('manage/pipeedge{id}','ManageController@editPipeEdge');
 Route::get('manage/sprinkle','ManageController@showSprinkle');
 Route::put('manage/sprinkle{id}','ManageController@editSprinkle');
 
+Route::get('manage/decoration','ManageController@showDecoration');
+Route::put('manage/decoration{id}','ManageController@editDecoration');
+Route::post('manage/decoration','ManageController@addDecoration');
+Route::delete('manage/decoration{id}','ManageController@deleteDecoration');
+
+Route::post('manage/decoration/upload','ManageController@upload');
+Route::post('manage/decoration/upload/edit{edit}','ManageController@uploadEdit');
+Route::get('manage/decoration/search','ManageController@decorationSearch');
+
+Route::get('manage/deploy','ManageController@deploy');
+
+Route::get('manage/config','ManageController@getConfig');
+Route::get('signature/','GalleryController@getSignature');
+
 
 
 

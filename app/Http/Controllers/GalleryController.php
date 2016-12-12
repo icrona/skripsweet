@@ -10,6 +10,8 @@ use App\Profile;
 use App\Order;
 use Mail;
 use App\User;
+use Illuminate\Support\Facades\DB;
+
 
 class GalleryController extends Controller
 {
@@ -71,5 +73,19 @@ class GalleryController extends Controller
             $message->subject($data['subject']);
         });
         return redirect()->route('welcome');
+    }
+        public function getSignature(){
+
+        $birthday=DB::table('cakes')->select('name','description','size','price','image')->where('category','=','Birthday')->get();
+        $anniversary=DB::table('cakes')->select('name','description','size','price','image')->where('category','=','Anniversary')->get();
+        $seasonal=DB::table('cakes')->select('name','description','size','price','image')->where('category','=','Seasonal')->get();
+
+
+        $response = [
+          'birthday' => $birthday,
+          'anniversary'    => $anniversary,
+          'seasonal'   => $seasonal,
+        ];
+        return response()->json($response);
     }
 }

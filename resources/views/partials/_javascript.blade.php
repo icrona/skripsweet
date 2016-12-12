@@ -33,6 +33,8 @@
 
     <script type="text/javascript" src="/js/decoration.js"></script>
 
+     <script type="text/javascript" src="/js/deploy.js"></script>
+
     <script type="text/javascript" src="/js/cake-birthday.js"></script>
     <script type="text/javascript" src="/js/cake-anniversary.js"></script>
     <script type="text/javascript" src="/js/cake-seasonal.js"></script>

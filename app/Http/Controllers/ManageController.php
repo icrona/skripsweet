@@ -15,6 +15,12 @@ use App\Frosting;
 use App\TopPipe;
 use App\EdgePipe;
 use App\Sprinkle;
+use App\Decoration;
+use App\Version;
+use Image;
+use Storage;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ManageController extends Controller
 {
@@ -200,4 +206,135 @@ class ManageController extends Controller
         $edit = Sprinkle::find($id)->update($request->all());
         return response()->json($edit);
     }
+
+    public function showDecoration()
+    {
+        $decorations = Decoration::latest()->paginate(8);
+        $response = [
+          'pagination' => [
+            'total' => $decorations->total(),
+            'per_page' => $decorations->perPage(),
+            'current_page' => $decorations->currentPage(),
+            'last_page' => $decorations->lastPage(),
+            'from' => $decorations->firstItem(),
+            'to' => $decorations->lastItem()
+          ],
+          'data' => $decorations
+        ];
+        return response()->json($response);
+    }
+
+    public function decorationSearch(Request $request)
+    {
+        $search=$request->input('search');
+        $decorations = Decoration::where('name','like','%'.$search.'%')->latest()->paginate(8);
+        $response = [
+          'pagination' => [
+            'total' => $decorations->total(),
+            'per_page' => $decorations->perPage(),
+            'current_page' => $decorations->currentPage(),
+            'last_page' => $decorations->lastPage(),
+            'from' => $decorations->firstItem(),
+            'to' => $decorations->lastItem()
+          ],
+          'data' => $decorations
+        ];
+        return response()->json($response);
+    }
+
+    public function editDecoration(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'price' => 'required',
+            'availability'=>'required',
+        ));
+        $edit = Decoration::find($id)->update($request->all());
+        return response()->json($edit);
+    }
+
+    public function addDecoration(Request $request){
+        $this->validate($request,[
+          'name' => 'required|max:255',
+          'price'=>'required',
+          'image'=>'required|max:255'
+        ]);
+
+        $decoration = Decoration::create($request->all());
+        $decoration->save();
+        return response()->json($decoration);
+    }
+
+    public function upload(Request $request){
+      $image=$request->file;
+      $filename='added_decoration/'.time().'.'.$image->getClientOriginalExtension();
+      $location=public_path('images/'.$filename);
+      Image::make($image)->resize(400,400)->save($location);
+      return response()->json($filename);
+    }
+
+
+    public function uploadEdit(Request $request, $id){
+      $image=$request->file;
+      $filename='added_decoration/'.time().'.'.$image->getClientOriginalExtension();
+      $location=public_path('images/'.$filename);
+      Image::make($image)->resize(400,400)->save($location);
+
+      $delete=Decoration::find($id);
+      $deletedImage=$delete->image;
+      Storage::delete($deletedImage);
+
+      return response()->json($filename);
+    }
+
+    public function deleteDecoration($id)
+    {
+        $delete=Decoration::find($id);
+        $deletedImage=$delete->image;
+        Storage::delete($deletedImage);
+        Decoration::find($id)->delete();
+        return response()->json(['done']);
+    }
+
+    public function deploy(){
+        $version=Carbon::now()->toDateTimeString();
+        $edit=Version::find(1);
+        $edit->version=$version;
+        $edit->save();
+        $response = [
+          'version' => $version
+        ];
+        return response()->json($response);
+    }
+
+    public function getConfig(){
+        $get=Version::find(1);
+        $get_version=$get->version;
+        $flavour=DB::table('flavours')->select('name','price')->get();
+        $size=DB::table('sizes')->select('size','rate')->get();
+        $shape=DB::table('shapes')->select('name','availability')->get();
+        $frosting=DB::table('frostings')->select('name','one','two','three','four','availability')->get();
+        $pipe_top=DB::table('top_pipes')->select('id','price','availability')->get();
+        $pipe_edge=DB::table('edge_pipes')->select('id','price','availability')->get();
+        $sprinkle=DB::table('sprinkles')->select('id','price','availability')->get();
+        $candle=DB::table('decorations')->select('id','price','availability')->where('id','<=','11')->get();
+        $figure=DB::table('decorations')->select('id','price','availability')->where([
+            ['id','>=','12'],
+            ['id','<=','25']    
+        ])->get();
+
+        $response = [
+          'version' => $get_version,
+          'flavour' => $flavour,
+          'size'    => $size,
+          'shape'   => $shape,
+          'frosting'=> $frosting,
+          'pipe_top'=> $pipe_top,
+          'pipe_edge'=>$pipe_edge,
+          'sprinkle'=>$sprinkle,
+          'candle'=>$candle,
+          'figure'=>$figure
+        ];
+        return response()->json($response);
+    }
+
 }

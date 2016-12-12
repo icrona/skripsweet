@@ -193,6 +193,9 @@ class CakeController extends Controller
     
     public function destroy($id)
     {
+                    $delete=Cake::find($id);
+      $deletedImage=$delete->image;
+      Storage::delete($deletedImage);
         Cake::find($id)->delete();
         return response()->json(['done']);
     }
