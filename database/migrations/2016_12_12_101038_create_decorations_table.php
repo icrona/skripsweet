@@ -18,7 +18,7 @@ class CreateDecorationsTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->integer('price');
-            $table->boolean('availability');
+            $table->boolean('availability')->nullable();
             $table->timestamps();
         });
     }

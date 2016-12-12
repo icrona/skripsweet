@@ -497,64 +497,154 @@
                                   <label for="sel2" align="center">Types:</label>
                                   <select name="formb" onchange="location = this.value;">
                                     <option value="#pipe-top">Pipe Top</option>
-                                    <option value="#pipe-edge-bottom">Pipe Edge & Bottom</option>
+                                    <option value="#pipe-edge">Pipe Edge & Bottom</option>
                                     <option value="#sprinkles">Sprinkles</option>
                                   </select>                                
                                 </div>
                               </form>
                     </div>                   
-                    <div class="row text-center" id="pipe-top">
-                    <h3>Pipe Top</h3><br>
-                        <div class="col-md-2 portfolio-item">
-                            <img class="img-responsive img-thumbnail" src="http://placehold.it/750x450" alt="">
-                            <b>Strawberry</b> <br> Rp. 35.000 <br><br>
-                            <a href="editsprinkle.html" class="btn btn-primary btn btn-sm">Edit</a>
+                    <div class="row " id="pipe-top">
+                    <h3 style="text-align:center;">Pipe Top</h3><br>
+                      <div class="row text-center">
+                        <div class="col-md-2 portfolio-item" v-for="pipe in pipes">
+                            <img height="100" width="100" src="{{ asset('images/pipe0')}}/@{{pipe.image}}"><br>
+                            <b>@{{pipe.name}}</b> <br> Rp. @{{pipe.price}} <br><br>
+                            <a href="#" @click.prevent="editItem(pipe)" class="btn btn-primary btn btn-sm">Edit</a>
                             <div class="checkbox">
-                                <label><input type="checkbox" value="">Availability</label>
+                                <label><input type="checkbox" v-model="pipe.availability" @click="clickCheckBox(pipe)"  >Availability</label>
                             </div>
+                            <br>
                         </div>
+                      </div>
+                        
+
+
+                        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">Edit @{{pipes[fillItem.id-1].name}} Price</h3>
+      </div>
+<div class="modal-body">
+        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="updateItem(fillItem.id)" data-parsley-validate="">
+          <div class="form-group">
+            <label for="one">Price:</label>
+            <input type="text" name="one" class="form-control" v-model="fillItem.price" required="" data-parsley-type="digits" />
+          </div>
+          <div class="form-group">
+            <label for="availability">Availability:</label>
+            <input type="checkbox" name="availability"  v-model="fillItem.availability" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> 
+</div>
                         
                         
                     </div>
                     
                     <br><br>
                     
-                    <div class="row text-center" id="pipe-edge-bottom">
-                    <h3>Pipe Edge & Bottom</h3><br>
-                        <div class="col-md-2 portfolio-item">
-                            <img class="img-responsive img-thumbnail" src="http://placehold.it/750x450" alt="">
-                            <b>Pipe 1</b> <br> Rp. 10000 <br><br>
-                            <a href="editsprinkle.html" class="btn btn-primary btn btn-sm">Edit</a>
+                    <div class="row " id="pipe-edge">
+                    <h3 style="text-align:center;">Pipe Edge - Bottom </h3><br>
+                      <div class="row text-center">
+                        <div class="col-md-2 portfolio-item" v-for="pipe in pipes">
+                            <img height="100" width="100" src="{{ asset('images/pipe1')}}/@{{pipe.image}}"><br>
+                            <b>@{{pipe.name}}</b> <br> Rp. @{{pipe.price}} <br><br>
+                            <a href="#" @click.prevent="editItem(pipe)" class="btn btn-primary btn btn-sm">Edit</a>
                             <div class="checkbox">
-                                <label><input type="checkbox" value="">Availability</label>
+                                <label><input type="checkbox" v-model="pipe.availability" @click="clickCheckBox(pipe)"  >Availability</label>
                             </div>
+                            <br>
                         </div>
+                      </div>
                         
-                                              
+
+
+                        <div class="modal fade" id="edit1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">Edit @{{pipes[fillItem.id-1].name}} Price</h3>
+      </div>
+<div class="modal-body">
+        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="updateItem(fillItem.id)" data-parsley-validate="">
+          <div class="form-group">
+            <label for="one">Price:</label>
+            <input type="text" name="one" class="form-control" v-model="fillItem.price" required="" data-parsley-type="digits" />
+          </div>
+          <div class="form-group">
+            <label for="availability">Availability:</label>
+            <input type="checkbox" name="availability"  v-model="fillItem.availability" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> 
+</div>
+                        
+                        
                     </div>
+                    
                     <br><br>
-                    
-                    <div class="row text-center" id="sprinkles">
-                    <h3>Sprinkles</h3><br>
-                        <div class="col-md-2 portfolio-item">
-                            <img class="img-responsive img-thumbnail" src="http://placehold.it/750x450" alt="">
-                            <b>Meses</b> <br> Rp. 5000 <br><br>
-                            <a href="editsprinkle.html" class="btn btn-primary btn btn-sm">Edit</a>
+                    <div class="row " id="sprinkles">
+                    <h3 style="text-align:center;">Sprinkles</h3><br>
+                      <div class="row text-center">
+                        <div class="col-md-2 portfolio-item" v-for="sprinkle in sprinkles">
+                            <img height="100" width="100" src="{{ asset('images/sprinkles')}}/@{{sprinkle.image}}"><br>
+                            <b>@{{sprinkle.name}}</b> <br> Rp. @{{sprinkle.price}} <br><br>
+                            <a href="#" @click.prevent="editItem(sprinkle)" class="btn btn-primary btn btn-sm">Edit</a>
                             <div class="checkbox">
-                                <label><input type="checkbox" value="">Availability</label>
+                                <label><input type="checkbox" v-model="sprinkle.availability" @click="clickCheckBox(sprinkle)"  >Availability</label>
                             </div>
+                            <br>
                         </div>
-                        <div class="col-md-2 portfolio-item">
-                            <img class="img-responsive img-thumbnail" src="http://placehold.it/750x450" alt="">
-                            <b>Butiran</b> <br> Rp. 5000 <br><br>
-                            <a href="editsprinkle.html" class="btn btn-primary btn btn-sm">Edit</a>
-                            <div class="checkbox">
-                                <label><input type="checkbox" value="">Availability</label>
-                            </div>
-                        </div>
-                    </div>
+                      </div>
+                        
+
+
+                        <div class="modal fade" id="edit2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">Edit @{{sprinkles[fillItem.id-1].name}} Price</h3>
+      </div>
+<div class="modal-body">
+        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="updateItem(fillItem.id)" data-parsley-validate="">
+          <div class="form-group">
+            <label for="one">Price:</label>
+            <input type="text" name="one" class="form-control" v-model="fillItem.price" required="" data-parsley-type="digits" />
+          </div>
+          <div class="form-group">
+            <label for="availability">Availability:</label>
+            <input type="checkbox" name="availability"  v-model="fillItem.availability" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> 
+</div>
                     
-                </div>
+                    
                 
             </div>
         </div>

@@ -67,6 +67,16 @@ Route::put('manage/shape{id}','ManageController@editShape');
 Route::get('manage/frosting','ManageController@showFrosting');
 Route::put('manage/frosting{id}','ManageController@editFrosting');
 
+Route::get('manage/pipetop','ManageController@showPipeTop');
+Route::put('manage/pipetop{id}','ManageController@editPipeTop');
+
+Route::get('manage/pipeedge','ManageController@showPipeEdge');
+Route::put('manage/pipeedge{id}','ManageController@editPipeEdge');
+
+Route::get('manage/sprinkle','ManageController@showSprinkle');
+Route::put('manage/sprinkle{id}','ManageController@editSprinkle');
+
+
 
 
 

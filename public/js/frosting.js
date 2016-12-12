@@ -73,7 +73,7 @@ new Vue({
         else{
           $("#edit-frosting").modal('hide')
         }
-        toastr.success('Shape Availability Updated Successfully.', 'Success Alert', {timeOut: 3000});
+        toastr.success('Frosting Updated Successfully.', 'Success Alert', {timeOut: 3000});
 
       }, (response) => {
         this.formErrors = response.data;

@@ -12,6 +12,9 @@ use App\Flavour;
 use App\Size;
 use App\Shape;
 use App\Frosting;
+use App\TopPipe;
+use App\EdgePipe;
+use App\Sprinkle;
 
 class ManageController extends Controller
 {
@@ -138,6 +141,63 @@ class ManageController extends Controller
             'availability'=>'required',
         ));
         $edit = Frosting::find($id)->update($request->all());
+        return response()->json($edit);
+    }
+
+    public function showPipeTop()
+    {
+        $pipes = TopPipe::all();
+        $response = [
+          'data' => $pipes
+        ];
+        return response()->json($response);
+    }
+
+    public function editPipeTop(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'price' => 'required',
+            'availability'=>'required',
+        ));
+        $edit = TopPipe::find($id)->update($request->all());
+        return response()->json($edit);
+    }
+
+    public function showPipeEdge()
+    {
+        $pipes = EdgePipe::all();
+        $response = [
+          'data' => $pipes
+        ];
+        return response()->json($response);
+    }
+
+    public function editPipeEdge(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'price' => 'required',
+            'availability'=>'required',
+        ));
+        $edit = EdgePipe::find($id)->update($request->all());
+        return response()->json($edit);
+    }
+
+    public function showSprinkle()
+    {
+        $sprinkles = Sprinkle::all();
+        $response = [
+          'data' => $sprinkles
+        ];
+        return response()->json($response);
+    }
+
+    public function editSprinkle(Request $request,$id)
+    {
+        $this->validate($request,array(
+            'price' => 'required',
+            'availability'=>'required',
+        ));
+        $edit = Sprinkle::find($id)->update($request->all());
         return response()->json($edit);
     }
 }

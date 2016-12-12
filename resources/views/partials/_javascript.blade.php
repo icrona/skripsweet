@@ -27,6 +27,12 @@
     <script type="text/javascript" src="/js/shape.js"></script>
     <script type="text/javascript" src="/js/frosting.js"></script>
 
+    <script type="text/javascript" src="/js/pipetop.js"></script>
+    <script type="text/javascript" src="/js/pipeedge.js"></script>
+    <script type="text/javascript" src="/js/sprinkle.js"></script>
+
+    <script type="text/javascript" src="/js/decoration.js"></script>
+
     <script type="text/javascript" src="/js/cake-birthday.js"></script>
     <script type="text/javascript" src="/js/cake-anniversary.js"></script>
     <script type="text/javascript" src="/js/cake-seasonal.js"></script>
