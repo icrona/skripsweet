@@ -8,7 +8,6 @@
         * {
           box-sizing: border-box;
         }
-
         #materialInput {
           background-image: url('/css/searchicon.png');
           background-position: 10px 10px;
@@ -30,7 +29,6 @@
           border: 1px solid #ddd;
           margin-bottom: 12px;
         }
-
         section{
             background-color:#bfd8d2;
         }
@@ -45,7 +43,6 @@
                         border-collapse: collapse;
                         width: 100%;
                     }
-
                     th, td {
                     
                     text-align: center;
@@ -57,7 +54,6 @@
                     tr:nth-child(odd){
                         background-color:rgba(255, 255, 255,1);
                     }
-
                     th {
                     background-color: #4CAF50;
                     color: white;
@@ -459,7 +455,6 @@
                             </div>
                             <br>
                         </div>
-
                         <div class="row text-center">
                             <div class="col-lg-12">
                                 <ul class="pagination">

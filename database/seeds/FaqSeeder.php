@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use App\Faq;
 
 class FaqSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class FaqSeeder extends Seeder
      */
     public function run()
     {
+        Faq::truncate();
         $faker = Faker::create();
     	foreach (range(1,15) as $index) {
 	        DB::table('faqs')->insert([
