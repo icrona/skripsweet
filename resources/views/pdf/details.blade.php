@@ -4,6 +4,10 @@
 	<title>Order Details Download</title>
 </head>
 <body>
+	<style type="text/css">
+	table td, table th{
+		border:1px solid black;
+	}
 			<h1>Order Details</h1>
 			<a href="{{ url('/orders'.$order->id) }}"><small>{{ url('/orders'.$order->id) }}</small> </a>
 			<p>Date Received : {{$order->created_at}}</p>
@@ -63,10 +67,10 @@
 			<p>Size Tier 3: {{$order->cake_size2}}</p>
 			@endif
 			<p>Flavour Tier 1: {{$order->cake_flavour}}</p>
-			@if($order->cake_flavour1 != 0)
+			@if($order->cake_flavour1 != "")
 			<p>Flavour Tier 2: {{$order->cake_flavour1}}</p>
 			@endif
-			@if($order->cake_flavour2 != 0)
+			@if($order->cake_flavour2 != "")
 			<p>Flavour Tier 3: {{$order->cake_flavour2}}</p>
 			@endif
 			<p>Frosting : {{$order->cake_frosting}}</p>

@@ -4,6 +4,10 @@
 	<title>Report Download</title>
 </head>
 <body>
+    <style type="text/css">
+    table td, table th{
+        border:1px solid black;
+    }
 			<h1>Report</h1>
 			<h4>Period : {{$from}} - {{$to}} <h4> 
 			<p><small>Printed at : {{$time_report}}</small></p>
