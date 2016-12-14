@@ -97,8 +97,9 @@
             </div>
 
             </div> 
-            <div class="col-md-4">
-                                <h3>@{{orders.cake_name}}</h3>
+            <div class="col-md-2">
+                <h1>Cake Details</h1>
+                <h4>@{{orders.cake_name}}</h3>
                 <h4>Rp. @{{orders.cake_price}}</h4>
                 <h4>Size Tier 1: @{{orders.cake_size}}cm</h4>
                 <h4 v-if="orders.cake_size1 != 0">Size Tier 2: @{{orders.cake_size1}}cm</h4>
@@ -109,7 +110,7 @@
                 <h4>Frosting : @{{orders.cake_frosting}}</h4>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h1>Order Details</h1>
                 <h6>Date Received : @{{orders.created_at}}</h6>
                 <h6>Status : @{{orders.status}}</h6>
