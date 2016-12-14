@@ -53,7 +53,7 @@
     @else
             <div class="container">
         <div class="row">
-            <div class="col-md-4 text-center">
+            <div class="col-md-5 text-center">
                                     <div class="table-responsive">
                 <table class="table">
                     <tr>
@@ -90,7 +90,7 @@
                 <h4>Frosting : @{{orders.cake_frosting}}</h4>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <h1>Order Details</h1>
                 <h6>Date Received : @{{orders.created_at}}</h6>
                 <h6>Status : @{{orders.status}}</h6>
