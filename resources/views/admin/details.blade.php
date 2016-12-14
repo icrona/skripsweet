@@ -97,7 +97,7 @@
             </div>
 
             </div> 
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <h1>Cake Details</h1>
                 <h4>@{{orders.cake_name}}</h3>
                 <h4>Rp. @{{orders.cake_price}}</h4>
@@ -110,7 +110,7 @@
                 <h4>Frosting : @{{orders.cake_frosting}}</h4>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <h1>Order Details</h1>
                 <h6>Date Received : @{{orders.created_at}}</h6>
                 <h6>Status : @{{orders.status}}</h6>
