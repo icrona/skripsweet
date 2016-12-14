@@ -31,27 +31,26 @@
 <table>
 	<tr>
 		<td>
-		<tr>
-			<td>
-				<img src="{{ public_path('images/') . $order->cake_image }}" style="width:150px;height:150px;">
-			</td>
-			<td>
-				<img src="{{ public_path('images/') . $order->cake_image1 }}" style="width:150px;height:150px;">
-			</td>
-					
-		</tr>
-		<tr>
-						<td>
-				<img src="{{ public_path('images/') . $order->cake_image2}}" style="width:150px;height:150px;">
-			</td>
-			<td>
-				<img src="{{ public_path('images/') . $order->cake_image3 }}" style="width:150px;height:150px;">
-			</td>
-					
-		</tr>
-			
-		</td>
-		<td>
+			<tr>
+				<td>
+					<img src="{{ public_path('images/') . $order->cake_image }}" style="width:200px;height:200px;">
+				</td>
+				<td>
+					<img src="{{ public_path('images/') . $order->cake_image1 }}" style="width:200px;height:200px;">
+				</td>
+						
+			</tr>
+			<tr>
+							<td>
+					<img src="{{ public_path('images/') . $order->cake_image2}}" style="width:200px;height:200px;">
+				</td>
+				<td>
+					<img src="{{ public_path('images/') . $order->cake_image3 }}" style="width:200px;height:200px;">
+				</td>
+						
+			</tr>
+</table>
+
 			<p>Cake Name       : {{$order->cake_name}}<p>
 			<p>Price       : {{$order->cake_price}}<p>
 			<p>Size Tier 1: {{$order->cake_size}}</p>
@@ -70,17 +69,15 @@
 			@endif
 			<p>Frosting : {{$order->cake_frosting}}</p>
 
-		</td>
-		<td>
+
 			<p>Name       : {{$order->name}}<p>
 			<p>Phone       : {{$order->phone}}<p>
 			<p>Email       : {{$order->email}}<p>
 			<p>Address       : {{$order->address}}<p>
 			<p>Delivery Date       : {{$order->date}}<p>
 			<p>Notes      : {{$order->notes}}<p>
-		</td>
-	</tr>
-</table>
+
+
 @endif
 <br>
 
