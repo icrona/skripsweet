@@ -73,7 +73,7 @@
     @else
             <div class="container">
         <div class="row">
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
                                     <div class="table-responsive">
                 <table class="table">
                     <tr>
@@ -93,20 +93,23 @@
                         </td>
                     </tr>
                 </table>
-                <h3>@{{orders.cake_name}}</h3>
+
+            </div>
+
+            </div> 
+            <div class="col-md-4">
+                                <h3>@{{orders.cake_name}}</h3>
                 <h4>Rp. @{{orders.cake_price}}</h4>
                 <h4>Size Tier 1: @{{orders.cake_size}}cm</h4>
                 <h4 v-if="orders.cake_size1 != 0">Size Tier 2: @{{orders.cake_size1}}cm</h4>
                 <h4 v-if="orders.cake_size2 != 0">Size Tier 2: @{{orders.cake_size2}}cm</h4>
-                <h4>Flavour Tier 1: @{{orders.cake_flavour}}cm</h4>
-                <h4 v-if="orders.cake_tier >1">Flavour Tier 2: @{{orders.cake_flavour1}}cm</h4>
-                <h4 v-if="orders.cake_tier >2">Flavour Tier 2: @{{orders.cake_flavour2}}cm</h4>
+                <h4>Flavour Tier 1: @{{orders.cake_flavour}}</h4>
+                <h4 v-if="orders.cake_tier >1">Flavour Tier 2: @{{orders.cake_flavour1}}</h4>
+                <h4 v-if="orders.cake_tier >2">Flavour Tier 2: @{{orders.cake_flavour2}}</h4>
                 <h4>Frosting : @{{orders.cake_frosting}}</h4>
             </div>
 
-            </div> 
-
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <h1>Order Details</h1>
                 <h6>Date Received : @{{orders.created_at}}</h6>
                 <h6>Status : @{{orders.status}}</h6>
