@@ -326,7 +326,7 @@ class ManageController extends Controller
             ['id','>=','12'],
             ['id','<=','25']    
         ])->get();
-        $added_decoration=DB::table('decorations')->select('id','price','availability')->where('id','<','25')->get();
+        $added_decoration=DB::table('decorations')->select('id','price','availability')->where('id','>','25')->get();
 
         $response = [
           'version' => $get_version,
