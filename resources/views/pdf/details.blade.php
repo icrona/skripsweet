@@ -62,12 +62,12 @@
 		<td>
 			<p>Cake Name       : {{$order->cake_name}}<p>
 			<p>Price       : {{$order->cake_price}}<p>
-			<p>Size Tier 1: {{$order->cake_size}}</p>
+			<p>Size Tier 1: {{$order->cake_size}} cm</p>
 			@if($order->cake_size1 != 0)
-			<p>Size Tier 2: {{$order->cake_size1}}</p>
+			<p>Size Tier 2: {{$order->cake_size1}} cm</p>
 			@endif
 			@if($order->cake_size2 != 0)
-			<p>Size Tier 3: {{$order->cake_size2}}</p>
+			<p>Size Tier 3: {{$order->cake_size2}} cm</p>
 			@endif
 			<p>Flavour Tier 1: {{$order->cake_flavour}}</p>
 			@if($order->cake_flavour1 != "")
