@@ -138,10 +138,29 @@ class GalleryController extends Controller
             $filename4='order/image4_'.time().'.'.$image4->getClientOriginalExtension();
             $location4=public_path('images/'.$filename4);
             Image::make($image4)->resize(345,420)->save($location4);
-            $order->cake_image3=$filename;
+            $order->cake_image3=$filename4;
         }
 
         $order->save();
+
+        $user=User::find(1);
+        $data=array(
+            'email'=>$user->email,
+            'subject'=>'Congratulations! You Got New Order!',
+            'order_id'=>$order->id,
+            'customer_name'=>$order->name,
+            'customer_email'=>$order->email,
+            'customer_phone'=>$order->phone,
+            'delivery_date'=>$order->date,
+            'cake_name'=>$order->cake_name,
+            'cake_price'=>$order->cake_price,
+            );
+
+        Mail::send('email.order',$data,function($message) use($data){
+            $message->from('skripsweetcake@gmail.com');
+            $message->to($data['email']);
+            $message->subject($data['subject']);
+        });
 
         $response = [
           'order' => $order
