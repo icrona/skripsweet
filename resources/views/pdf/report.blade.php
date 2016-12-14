@@ -8,6 +8,7 @@
     table td, table th{
         border:1px solid black;
     }
+    </style>
 			<h1>Report</h1>
 			<h4>Period : {{$from}} - {{$to}} <h4> 
 			<p><small>Printed at : {{$time_report}}</small></p>

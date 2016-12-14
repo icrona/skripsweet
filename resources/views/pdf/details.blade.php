@@ -8,6 +8,8 @@
 	table td, table th{
 		border:1px solid black;
 	}
+	</style>
+
 			<h1>Order Details</h1>
 			<a href="{{ url('/orders'.$order->id) }}"><small>{{ url('/orders'.$order->id) }}</small> </a>
 			<p>Date Received : {{$order->created_at}}</p>
