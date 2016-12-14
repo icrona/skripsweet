@@ -15,7 +15,7 @@ new Vue({
     offset: 4,
     formErrors:{},
     formErrorsUpdate:{},
-    fillItem : {'id':'','name':'','phone':'','email':'','address':'','notes':'','cake_name':'','cake_description':'','cake_size':'','cake_price':'','cake_image':'','status':''}
+    fillItem : {'id':'','status':''}
   },
     
   computed: {
@@ -59,16 +59,6 @@ new Vue({
     },
     updateStatus: function(status,orders) {
       this.fillItem.id = orders.id;
-      this.fillItem.name = orders.name;
-      this.fillItem.phone = orders.phone;
-      this.fillItem.email = orders.email;
-      this.fillItem.address = orders.address;
-      this.fillItem.cake_name = orders.cake_name;
-      this.fillItem.cake_description = orders.cake_description;
-      this.fillItem.cake_category = orders.cake_cateogry;
-      this.fillItem.cake_size = orders.cake_size;
-      this.fillItem.cake_price = orders.cake_price;
-      this.fillItem.cake_image = orders.cake_image;
       this.fillItem.status=status;
       var input = this.fillItem;
       var ini=this;
