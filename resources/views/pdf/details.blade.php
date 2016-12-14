@@ -14,6 +14,7 @@
 			<a href="{{ url('/orders'.$order->id) }}"><small>{{ url('/orders'.$order->id) }}</small> </a>
 			<p><small>Date Received : {{$order->created_at}}</small></p>
 			<p><small>Status : {{$order->status}}</small></p>
+			<p><small>Printed at : {{$order->time}}</small></p>
 @if($order->order_from =="Web")
 <table>
 	<tr>
@@ -88,10 +89,5 @@
 	</tr>
 </table>
 @endif
-<br>
-
-<p><small>Printed at : {{$order->time}}</small></p>
-
-
 </body>
 </html>
