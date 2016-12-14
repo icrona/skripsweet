@@ -130,7 +130,7 @@ class GalleryController extends Controller
             $image3=$request->file('image3');
             $filename3='order/'.time().'.'.$image3->getClientOriginalExtension();
             $location3=public_path('images/'.$filename3);
-            Image::make($image)3->resize(345,420)->save($location3);
+            Image::make($image3)->resize(345,420)->save($location3);
             $order->cake_image2=$filename3;
         }
         if($request->hasFile('image4')){
