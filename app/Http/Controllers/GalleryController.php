@@ -114,28 +114,28 @@ class GalleryController extends Controller
 
         if($request->hasFile('image1')){
             $image1=$request->file('image1');
-            $filename1='order/image1'.time().'.'.$image1->getClientOriginalExtension();
+            $filename1='order/image1_'.time().'.'.$image1->getClientOriginalExtension();
             $location1=public_path('images/'.$filename1);
             Image::make($image1)->resize(345,420)->save($location1);
             $order->cake_image=$filename1;
         }
         if($request->hasFile('image2')){
             $image2=$request->file('image2');
-            $filename2='order/image2'.time().'.'.$image2->getClientOriginalExtension();
+            $filename2='order/image2_'.time().'.'.$image2->getClientOriginalExtension();
             $location2=public_path('images/'.$filename2);
             Image::make($image2)->resize(345,420)->save($location2);
             $order->cake_image1=$filename2;
         }
         if($request->hasFile('image3')){
             $image3=$request->file('image3');
-            $filename3='order/image3'.time().'.'.$image3->getClientOriginalExtension();
+            $filename3='order/image3_'.time().'.'.$image3->getClientOriginalExtension();
             $location3=public_path('images/'.$filename3);
             Image::make($image3)->resize(345,420)->save($location3);
             $order->cake_image2=$filename3;
         }
         if($request->hasFile('image4')){
             $image4=$request->file('image4');
-            $filename4='order/image4'.time().'.'.$image4->getClientOriginalExtension();
+            $filename4='order/image4_'.time().'.'.$image4->getClientOriginalExtension();
             $location4=public_path('images/'.$filename4);
             Image::make($image4)->resize(345,420)->save($location4);
             $order->cake_image3=$filename;
@@ -143,27 +143,8 @@ class GalleryController extends Controller
 
         $order->save();
 
-        $user=User::find(1);
-        $data=array(
-            'email'=>$user->email,
-            'subject'=>'Congratulations! You Got New Order!',
-            'order_id'=>$order->id,
-            'customer_name'=>$order->name,
-            'customer_email'=>$order->email,
-            'customer_phone'=>$order->phone,
-            'delivery_date'=>$order->date,
-            'cake_name'=>$order->cake_name,
-            'cake_price'=>$order->cake_price,
-            );
-
-        Mail::send('email.order',$data,function($message) use($data){
-            $message->from('skripsweetcake@gmail.com');
-            $message->to($data['email']);
-            $message->subject($data['subject']);
-        });
-
         $response = [
-          'order' => $order,
+          'order' => $order
         ];
         return response()->json($response);
 
