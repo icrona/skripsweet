@@ -50,7 +50,9 @@
 						
 			</tr>
 </table>
-
+<table>
+	<tr>
+		<td>
 			<p>Cake Name       : {{$order->cake_name}}<p>
 			<p>Price       : {{$order->cake_price}}<p>
 			<p>Size Tier 1: {{$order->cake_size}}</p>
@@ -68,14 +70,22 @@
 			<p>Flavour Tier 3: {{$order->cake_flavour2}}</p>
 			@endif
 			<p>Frosting : {{$order->cake_frosting}}</p>
-
-
+		</td>
+		<td>
 			<p>Name       : {{$order->name}}<p>
 			<p>Phone       : {{$order->phone}}<p>
 			<p>Email       : {{$order->email}}<p>
 			<p>Address       : {{$order->address}}<p>
 			<p>Delivery Date       : {{$order->date}}<p>
 			<p>Notes      : {{$order->notes}}<p>
+		</td>
+	</tr>
+</table>>
+
+			
+
+
+			
 
 
 @endif
