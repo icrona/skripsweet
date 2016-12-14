@@ -114,33 +114,32 @@ class GalleryController extends Controller
 
         if($request->hasFile('image1')){
             $image1=$request->file('image1');
-            $filename='order/'.time().'.'.$image1->getClientOriginalExtension();
-            $location=public_path('images/'.$filename);
-            Image::make($image)->resize(345,420)->save($location);
-            $order->cake_image=$filename;
+            $filename1='order/'.time().'.'.$image1->getClientOriginalExtension();
+            $location1=public_path('images/'.$filename1);
+            Image::make($image1)->resize(345,420)->save($location1);
+            $order->cake_image=$filename1;
         }
         if($request->hasFile('image2')){
             $image2=$request->file('image2');
-            $filename='order/'.time().'.'.$image2->getClientOriginalExtension();
-            $location=public_path('images/'.$filename);
-            Image::make($image)->resize(345,420)->save($location);
-            $order->cake_image1=$filename;
+            $filename2='order/'.time().'.'.$image2->getClientOriginalExtension();
+            $location2=public_path('images/'.$filename2);
+            Image::make($image2)->resize(345,420)->save($location2);
+            $order->cake_image1=$filename2;
         }
         if($request->hasFile('image3')){
             $image3=$request->file('image3');
-            $filename='order/'.time().'.'.$image3->getClientOriginalExtension();
-            $location=public_path('images/'.$filename);
-            Image::make($image)->resize(345,420)->save($location);
-            $order->cake_image2=$filename;
+            $filename3='order/'.time().'.'.$image3->getClientOriginalExtension();
+            $location3=public_path('images/'.$filename3);
+            Image::make($image)3->resize(345,420)->save($location3);
+            $order->cake_image2=$filename3;
         }
         if($request->hasFile('image4')){
             $image4=$request->file('image4');
-            $filename='order/'.time().'.'.$image4->getClientOriginalExtension();
-            $location=public_path('images/'.$filename);
-            Image::make($image)->resize(345,420)->save($location);
+            $filename4='order/'.time().'.'.$image4->getClientOriginalExtension();
+            $location4=public_path('images/'.$filename4);
+            Image::make($image4)->resize(345,420)->save($location4);
             $order->cake_image3=$filename;
         }
-
 
         $order->save();
 
