@@ -39,19 +39,19 @@
 		<td>
 			<tr>
 				<td>
-					<img src="{{ public_path('images/') . $order->cake_image }}" style="width:200px;height:200px;">
+					<img src="{{ public_path('images/') . $order->cake_image }}" style="width:175px;height:175px;">
 				</td>
 				<td>
-					<img src="{{ public_path('images/') . $order->cake_image1 }}" style="width:200px;height:200px;">
+					<img src="{{ public_path('images/') . $order->cake_image1 }}" style="width:175px;height:175px;">
 				</td>
 						
 			</tr>
 			<tr>
 							<td>
-					<img src="{{ public_path('images/') . $order->cake_image2}}" style="width:200px;height:200px;">
+					<img src="{{ public_path('images/') . $order->cake_image2}}" style="width:175px;height:175px;">
 				</td>
 				<td>
-					<img src="{{ public_path('images/') . $order->cake_image3 }}" style="width:200px;height:200px;">
+					<img src="{{ public_path('images/') . $order->cake_image3 }}" style="width:175px;height:175px;">
 				</td>
 						
 			</tr>
@@ -86,14 +86,7 @@
 			<p>Notes      : {{$order->notes}}<p>
 		</td>
 	</tr>
-</table>>
-
-			
-
-
-			
-
-
+</table>
 @endif
 <br>
 
