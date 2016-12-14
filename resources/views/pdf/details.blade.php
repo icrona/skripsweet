@@ -12,8 +12,8 @@
 
 			<h1>Order Details</h1>
 			<a href="{{ url('/orders'.$order->id) }}"><small>{{ url('/orders'.$order->id) }}</small> </a>
-			<p>Date Received : {{$order->created_at}}</p>
-			<p>Status : {{$order->status}}</p>
+			<p><small>Date Received : {{$order->created_at}}</small></p>
+			<p><small>Status : {{$order->status}}</small></p>
 @if($order->order_from =="Web")
 <table>
 	<tr>
