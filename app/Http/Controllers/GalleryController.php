@@ -163,7 +163,7 @@ class GalleryController extends Controller
         });
 
         $response = [
-          'order' => $order
+          'message' => 'success'
         ];
         return response()->json($response);
 
