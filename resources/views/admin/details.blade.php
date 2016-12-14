@@ -24,26 +24,6 @@
                 <h3>@{{orders.cake_name}}</h3>
                 <h4>Rp. @{{orders.cake_price}}</h4>
             </div>
-                        {{--            <div class="table-responsive">
-                <table class="table">
-                    <tr>
-                        <td>
-                            <img class="img-responsive img-thumbnail" src={{asset('images/'.$order->cake_image)}}>
-                        </td>
-                        <td>
-                            <img class="img-responsive img-thumbnail" src={{asset('images/'.$order->cake_image)}}>
-                        </td>
-                    </tr>
-                        <tr>
-                        <td>
-                            <img class="img-responsive img-thumbnail" src={{asset('images/'.$order->cake_image)}}>
-                        </td>
-                        <td>
-                            <img class="img-responsive img-thumbnail" src={{asset('images/'.$order->cake_image)}}>
-                        </td>
-                    </tr>
-                </table>
-            </div> --}}
 
             <div class="col-md-6">
                 <h1>Order Details</h1>
@@ -103,10 +83,10 @@
                 <h4>Rp. @{{orders.cake_price}}</h4>
                 <h4>Size Tier 1: @{{orders.cake_size}}cm</h4>
                 <h4 v-if="orders.cake_size1 != 0">Size Tier 2: @{{orders.cake_size1}}cm</h4>
-                <h4 v-if="orders.cake_size2 != 0">Size Tier 2: @{{orders.cake_size2}}cm</h4>
+                <h4 v-if="orders.cake_size2 != 0">Size Tier 3: @{{orders.cake_size2}}cm</h4>
                 <h4>Flavour Tier 1: @{{orders.cake_flavour}}</h4>
                 <h4 v-if="orders.cake_tier >1">Flavour Tier 2: @{{orders.cake_flavour1}}</h4>
-                <h4 v-if="orders.cake_tier >2">Flavour Tier 2: @{{orders.cake_flavour2}}</h4>
+                <h4 v-if="orders.cake_tier >2">Flavour Tier 3: @{{orders.cake_flavour2}}</h4>
                 <h4>Frosting : @{{orders.cake_frosting}}</h4>
             </div>
 
