@@ -46,7 +46,7 @@
 
             <div class="col-md-6">
                 <h1>Order Details</h1>
-                <h6>Date Received : @{{orders.date}}</h6>
+                <h6>Date Received : @{{orders.created_at}}</h6>
                 <h6>Status : @{{orders.status}}</h6>
                 
                                 <span v-if="checkStatus(orders.status)">

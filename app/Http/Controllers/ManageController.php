@@ -17,6 +17,7 @@ use App\EdgePipe;
 use App\Sprinkle;
 use App\Decoration;
 use App\Version;
+use App\Profile;
 use Image;
 use Storage;
 use Carbon\Carbon;
@@ -273,6 +274,7 @@ class ManageController extends Controller
     }
 
 
+
     public function uploadEdit(Request $request, $id){
       $image=$request->file;
       $filename='added_decoration/'.time().'.'.$image->getClientOriginalExtension();
@@ -309,6 +311,9 @@ class ManageController extends Controller
     public function getConfig(){
         $get=Version::find(1);
         $get_version=$get->version;
+        $profile=Profile::find(1);
+        $days=$profile->days;
+
         $flavour=DB::table('flavours')->select('name','price')->get();
         $size=DB::table('sizes')->select('size','rate')->get();
         $shape=DB::table('shapes')->select('name','availability')->get();
@@ -321,9 +326,11 @@ class ManageController extends Controller
             ['id','>=','12'],
             ['id','<=','25']    
         ])->get();
+        $added_decoration=DB::table('decorations')->select('id','price','availability')->where('id','<','25')->get();
 
         $response = [
           'version' => $get_version,
+          'min_days'=> $days,
           'flavour' => $flavour,
           'size'    => $size,
           'shape'   => $shape,
@@ -332,7 +339,8 @@ class ManageController extends Controller
           'pipe_edge'=>$pipe_edge,
           'sprinkle'=>$sprinkle,
           'candle'=>$candle,
-          'figure'=>$figure
+          'figure'=>$figure,
+          'added_decoration'=>$added_decoration
         ];
         return response()->json($response);
     }

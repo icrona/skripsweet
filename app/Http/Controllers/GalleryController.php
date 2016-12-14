@@ -11,6 +11,8 @@ use App\Order;
 use Mail;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Image;
+use Storage;
 
 
 class GalleryController extends Controller
@@ -52,6 +54,7 @@ class GalleryController extends Controller
         $order->cake_size=$cake->size;
         $order->cake_price=$cake->price;
         $order->cake_image=$cake->image;
+        $order->order_from="Web";
         $order->status="Waiting Confirmation";
         $order->save();
 
@@ -74,6 +77,101 @@ class GalleryController extends Controller
         });
         return redirect()->route('welcome');
     }
+
+    public function orderFromApps(Request $request){
+        $this->validate($request,array(
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'email' => 'required|max:255',
+            'date' => 'required|max:255',
+            'address' => 'required',
+            ));
+
+        $order= new Order;
+        $order->name=$request->name;
+        $order->phone=$request->phone;
+        $order->email=$request->email;
+        $order->date=$request->date;
+        $order->address=$request->address;
+        $order->notes=$request->notes;
+
+        $order->cake_name=$request->cake_name;
+        $order->cake_tier=$request->cake_tier;
+
+        $order->cake_size=$request->cake_size;
+        $order->cake_size1=$request->cake_size1;
+        $order->cake_size2=$request->cake_size2;
+
+        $order->cake_flavour=$request->cake_flavour;
+        $order->cake_flavour1=$request->cake_flavour1;
+        $order->cake_flavour2=$request->cake_flavour2;
+
+        $order->cake_frosting=$request->cake_frosting;
+
+        $order->cake_price=$request->cake_price;
+        $order->status=$request->status;
+        $order->order_from=$request->order_from;
+
+        if($request->hasFile('image1')){
+            $image1=$request->file('image1');
+            $filename='order/'.time().'.'.$image1->getClientOriginalExtension();
+            $location=public_path('images/'.$filename);
+            Image::make($image)->resize(345,420)->save($location);
+            $order->cake_image=$filename;
+        }
+        if($request->hasFile('image2')){
+            $image2=$request->file('image2');
+            $filename='order/'.time().'.'.$image2->getClientOriginalExtension();
+            $location=public_path('images/'.$filename);
+            Image::make($image)->resize(345,420)->save($location);
+            $order->cake_image1=$filename;
+        }
+        if($request->hasFile('image3')){
+            $image3=$request->file('image3');
+            $filename='order/'.time().'.'.$image3->getClientOriginalExtension();
+            $location=public_path('images/'.$filename);
+            Image::make($image)->resize(345,420)->save($location);
+            $order->cake_image2=$filename;
+        }
+        if($request->hasFile('image4')){
+            $image4=$request->file('image4');
+            $filename='order/'.time().'.'.$image4->getClientOriginalExtension();
+            $location=public_path('images/'.$filename);
+            Image::make($image)->resize(345,420)->save($location);
+            $order->cake_image3=$filename;
+        }
+
+
+        $order->save();
+
+        $user=User::find(1);
+        $data=array(
+            'email'=>$user->email,
+            'subject'=>'Congratulations! You Got New Order!',
+            'order_id'=>$order->id,
+            'customer_name'=>$order->name,
+            'customer_email'=>$order->email,
+            'customer_phone'=>$order->phone,
+            'delivery_date'=>$order->date,
+            'cake_name'=>$order->cake_name,
+            'cake_price'=>$order->cake_price,
+            );
+
+        Mail::send('email.order',$data,function($message) use($data){
+            $message->from('skripsweetcake@gmail.com');
+            $message->to($data['email']);
+            $message->subject($data['subject']);
+        });
+
+        $response = [
+          'order' => $order,
+        ];
+        return response()->json($response);
+
+
+    }
+
+
         public function getSignature(){
 
         $birthday=DB::table('cakes')->select('name','description','size','price','image')->where('category','=','Birthday')->get();

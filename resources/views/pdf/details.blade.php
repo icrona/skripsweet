@@ -6,7 +6,7 @@
 <body>
 			<h1>Order Details</h1>
 			<a href="{{ url('/orders'.$order->id) }}"><small>{{ url('/orders'.$order->id) }}</small> </a>
-			<p>Date Received : {{$order->date}}</p>
+			<p>Date Received : {{$order->created_at}}</p>
 			<p>Status : {{$order->status}}</p>
 			
 <table>

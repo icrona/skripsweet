@@ -74,7 +74,7 @@ class OrderController extends Controller
             ['status','=','Accepted'],
             ['date','>=',$from],
             ['date','<=',$to]    
-        ])->latest()->paginate(10);
+        ])->orderBy('date','desc')->paginate(10);
         $total=$orders->sum('cake_price');
 
         $response = [
@@ -138,15 +138,6 @@ class OrderController extends Controller
     public function updateStatus(Request $request,$id)
     {
         $this->validate($request,array(
-            'name' => 'required|max:255',
-            'phone' => 'required|max:255',
-            'email' => 'required|max:255',
-            'address' => 'required',
-            'cake_name' => 'required|max:255',
-            'cake_description' => 'required',
-            'cake_size'=>'required',
-            'cake_price'=>'required',
-            'cake_image'=>'required|max:255',
             'status'=>'required'
         ));
         $edit = Order::find($id)->update($request->all());

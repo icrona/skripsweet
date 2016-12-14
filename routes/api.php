@@ -90,6 +90,8 @@ Route::get('manage/deploy','ManageController@deploy');
 Route::get('manage/config','ManageController@getConfig');
 Route::get('signature/','GalleryController@getSignature');
 
+Route::post('order/','GalleryController@orderFromApps');
+
 
 
 
