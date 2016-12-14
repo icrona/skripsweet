@@ -315,7 +315,7 @@ class ManageController extends Controller
         $days=$profile->days;
 
         $flavour=DB::table('flavours')->select('name','price')->get();
-        $size=DB::table('sizes')->select('size','rate')->get();
+        $size=DB::table('sizes')->select('size','rate')->orderBy('size','asc')->get();
         $shape=DB::table('shapes')->select('name','availability')->get();
         $frosting=DB::table('frostings')->select('name','one','two','three','four','availability')->get();
         $pipe_top=DB::table('top_pipes')->select('id','price','availability')->get();
