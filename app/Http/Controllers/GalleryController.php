@@ -143,6 +143,8 @@ class GalleryController extends Controller
 
         $order->save();
 
+        log::info($order);
+
         $user=User::find(1);
         $data=array(
             'email'=>$user->email,
