@@ -273,7 +273,7 @@ class ManageController extends Controller
         $flavour=DB::table('flavours')->select('name','price')->get();
         $size=DB::table('sizes')->select('size','rate')->orderBy('size','asc')->get();
         $shape=DB::table('shapes')->select('name','availability')->get();
-        $frosting=DB::table('frostings')->select('name','one','two','three','four','availability')->get();
+        $frosting=DB::table('frostings')->select('name','one','two','three','four','availability')->orderBy('name','asc')->get();
         $pipe_top=DB::table('top_pipes')->select('id','price','availability')->get();
         $pipe_edge=DB::table('edge_pipes')->select('id','price','availability')->get();
         $sprinkle=DB::table('sprinkles')->select('id','price','availability')->get();
