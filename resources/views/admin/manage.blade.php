@@ -444,13 +444,13 @@
                     <div class="row" align="center">
                         <div>
                         <br><input type="text" id="materialInput" name="search" @keyup="searchDecoration()" v-model="search" class="form-control"  placeholder="Search for materials..">
-                        <br><a data-toggle="modal" data-target="#create-item-decoration" class="btn btn-primary">Add New Decoration </a> <br><br>
+                        <br>
                         </div>                
                     </div>
                     <div class="row text-center">
                     
                         <div class="col-md-3 portfolio-item" v-for="decoration in decorations">
-                          <div v-if="decoration.id <= 25">
+
                             <img height="150" width="150" src="{{ asset('images/decorations/')}}/@{{decoration.image}}"><br>
                             <b>@{{decoration.name}}</b> <br> Rp. @{{decoration.price}} <br><br>
                             <a href="#" @click.prevent="editItem(decoration)" class="btn btn-primary btn btn-sm">Edit</a>
@@ -458,14 +458,6 @@
                                 <label><input type="checkbox" v-model="decoration.availability" @click="clickCheckBox(decoration)"  >Availability</label>
                             </div>
                             <br>
-                          </div>
-                          <div v-else>
-                            <img height="150" width="150" src="{{ asset('images/')}}/@{{decoration.image}}"><br>
-                            <b>@{{decoration.name}}</b> <br>Rp. @{{decoration.price}} <br><br>
-                            <a href="#" @click.prevent="editItem(decoration)" class="btn btn-primary btn btn-sm">Edit</a>
-                            <a href="#" @click.prevent="deleteItem(decoration)" class="btn btn-danger btn btn-sm">Delete</a>
-                          <br>
-                          </div>
                         </div>
                     </div>
                     <br><br>
@@ -521,77 +513,7 @@
   </div> 
 </div>
 
-                  <div class="modal fade" id="edit-upload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h3 class="modal-title" id="myModalLabel">Edit Decoration</h3>
-      </div>
-<div class="modal-body">
-        <form method="post" enctype="multipart/form-data" v-on:submit.prevent="uploadEdit(fillItem.id)" data-parsley-validate="">
-
-           <div class="form-group">
-            <label for="one">Name:</label>
-            <input type="text" name="one" class="form-control" v-model="fillItem.name" required="" />
-          </div>
-          <div class="form-group">
-            <label for="one">Price:</label>
-            <input type="text" name="one" class="form-control" v-model="fillItem.price" required="" data-parsley-type="digits" />
-          </div>
-          <div class="form-group">
-                <label for="image">Image:</label>                            
-                              <input id="resetFile" onclick="resetFileForm()" type="file" name="image" class="form-control" @change="onFileChange" />
-                              </div>
-
-          <div class="form-group">
-            <button type="submit" class="btn btn-success">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div> 
-</div>
-
-                    <div class="modal fade" id="create-item-decoration"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-          <h3 class="modal-title" id="myModalLabel">Add New Decoration</h3>
-        </div>
-        <div class="modal-body">
-          <form method="post" enctype="multipart/form-data" v-on:submit.prevent="upload" data-parsley-validate="">
-            <div class="form-group">
-              <label for="name">Name :</label>         
-              <input type="text" name="name" class="form-control" v-model="newItem.name" required=""  /> 
-              
-            </div>
-            <div class="form-group">
-              <label for="price">Price :</label>
-              <input type="text" name="price" class="form-control" v-model="newItem.price" required="" data-parsley-type="digits"/>            
-            </div>
-
-            <div class="form-group">
-                <label for="image">Image:</label>                            
-                              <input id="resetFile" onclick="resetFileForm()" type="file" name="image" class="form-control" @change="onFileChange" />
-                              </div>
-
-            <div class="form-group">
-              <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
- 
+                
                     
                 </div>
                 

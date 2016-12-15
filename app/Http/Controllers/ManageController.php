@@ -253,50 +253,6 @@ class ManageController extends Controller
         return response()->json($edit);
     }
 
-    public function addDecoration(Request $request){
-        $this->validate($request,[
-          'name' => 'required|max:255',
-          'price'=>'required',
-          'image'=>'required|max:255'
-        ]);
-
-        $decoration = Decoration::create($request->all());
-        $decoration->save();
-        return response()->json($decoration);
-    }
-
-    public function upload(Request $request){
-      $image=$request->file;
-      $filename='added_decoration/'.time().'.'.$image->getClientOriginalExtension();
-      $location=public_path('images/'.$filename);
-      Image::make($image)->resize(400,400)->save($location);
-      return response()->json($filename);
-    }
-
-
-
-    public function uploadEdit(Request $request, $id){
-      $image=$request->file;
-      $filename='added_decoration/'.time().'.'.$image->getClientOriginalExtension();
-      $location=public_path('images/'.$filename);
-      Image::make($image)->resize(400,400)->save($location);
-
-      $delete=Decoration::find($id);
-      $deletedImage=$delete->image;
-      Storage::delete($deletedImage);
-
-      return response()->json($filename);
-    }
-
-    public function deleteDecoration($id)
-    {
-        $delete=Decoration::find($id);
-        $deletedImage=$delete->image;
-        Storage::delete($deletedImage);
-        Decoration::find($id)->delete();
-        return response()->json(['done']);
-    }
-
     public function deploy(){
         $version=Carbon::now()->toDateTimeString();
         $edit=Version::find(1);
@@ -326,7 +282,6 @@ class ManageController extends Controller
             ['id','>=','12'],
             ['id','<=','25']    
         ])->get();
-        $added_decoration=DB::table('decorations')->select('id','price','availability')->where('id','>','25')->get();
 
         $response = [
           'version' => $get_version,
@@ -340,7 +295,6 @@ class ManageController extends Controller
           'sprinkle'=>$sprinkle,
           'candle'=>$candle,
           'figure'=>$figure,
-          'added_decoration'=>$added_decoration
         ];
         return response()->json($response);
     }

@@ -36,12 +36,11 @@
 
         .stylish-panel > div:hover img {
             border-radius: 50%;
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -o-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
         }
+
+                .grow { transition: all .2s ease-in-out; }
+            .grow:hover { transform: scale(1.1); }
+
 
     </style>    
 @endsection
@@ -52,7 +51,7 @@
             <div class="row stylish-panel">
                 <div class="col-md-4 col-md-offset-2">
                     <div>
-                      <img src="{{asset('images/'.$cake->image)}}" class="img-circle img-thumbnail">
+                      <img src="{{asset('images/'.$cake->image)}}" class="img-circle img-thumbnail grow">
                     </div>
                 </div>
                 <div class="col-md-4">

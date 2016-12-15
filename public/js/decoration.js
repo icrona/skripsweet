@@ -17,7 +17,6 @@ new Vue({
     formErrors:{},
     formErrorsUpdate:{},
     fillItem : {'name':'','price':'','availability':'','id':''},
-    newItem : {'name':'','price':'','availability':'',}
   },
   computed: {
     isActived: function() {
@@ -52,37 +51,6 @@ new Vue({
   },
 
   methods: {
-    onFileChange(e){
-      this.image='';
-      var files=e.target.files||e.dataTransfer.files;
-      if(!files.length) 
-        return;
-      this.image=files[0];
-    },
-
-    upload:function(){
-      let data = new FormData();
-      data.append('file',this.image);  
-      this.$http.post('/api/manage/decoration/upload',data).then((response) => {
-        this.fileName=response.data;
-        this.image='';
-        this.createItem();
-      });
-    },
-    createItem: function() {
-      this.newItem.availability=1;
-      this.newItem.image=this.fileName;
-      var input = this.newItem;
-      this.$http.post('/api/manage/decoration',input).then((response) => {
-        this.changePage(this.pagination.current_page);
-        this.newItem = {'name':'','price':'','availability':''}
-        this.fileName='';
-        $("#create-item-decoration").modal('hide');
-        toastr.success('Decoration Added Successfully.', 'Success Alert', {timeOut: 3000});
-      }, (response) => {
-        this.formErrors = response.data;
-      });
-    },
     getVueItems: function(page) {
       this.$http.get('/api/manage/decoration?page='+page).then((response) => {
         this.$set('decorations', response.data.data.data);
@@ -101,12 +69,7 @@ new Vue({
       this.fillItem.name=decorations.name;
       this.fillItem.price=decorations.price;
       this.fillItem.availability = decorations.availability;
-      if(decorations.id<=25){
-        $("#edit3").modal('show');
-      }
-      else{
-        $("#edit-upload").modal('show');
-      }
+      $("#edit3").modal('show');
         
     },
     clickCheckBox:function(item) {
@@ -123,20 +86,6 @@ new Vue({
       this.updateItem(item.id);
 
     },
-    uploadEdit:function(id){
-      if(this.image!=''){
-        let data = new FormData();
-        data.append('file',this.image);
-        this.$http.post('/api/manage/decoration/upload/edit'+id,data).then((response) => {
-          this.fileName=response.data;
-          this.image='';
-          this.updateItem(id);
-        });
-      }
-      else{
-        this.updateItem(id);
-      }
-    },
     updateItem:function(id){
       if(this.fileName!=''){
         this.fillItem.image=this.fileName;
@@ -144,36 +93,11 @@ new Vue({
       var input = this.fillItem;
       this.$http.put('/api/manage/decoration'+id,input).then((response) => {
         this.getVueItems();
-        if(id<=25){
           $("#edit3").modal('hide');
-        }
-        else{
-          $("#edit-upload").modal('hide');
-        }
         toastr.success('Decoration Updated Successfully.', 'Success Alert', {timeOut: 3000});
       }, (response) => {
         this.formErrors = response.data;
       });
-    },
-    deleteItem: function(item) {
-      var ini=this;
-      swal({
-              title: "Are you sure?",
-              text: "You will delete this decoration",
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
-              confirmButtonText: "Yes, delete it!",
-              closeOnConfirm: false
-            },
-            function(isConfirm){
-              if(isConfirm){
-                ini.$http.delete('/api/manage/decoration'+item.id).then((response) => {
-                  ini.changePage(ini.pagination.current_page);
-                });
-                swal("Deleted!", "Your decoration has been deleted.", "success");
-              }             
-      });    
     },
 
     changePage: function(page) {

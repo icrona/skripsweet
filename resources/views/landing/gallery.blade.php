@@ -29,12 +29,9 @@
 
         .stylish-panel > div:hover img {
             border-radius: 50%;
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -o-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
         }
+        .grow { transition: all .2s ease-in-out; }
+            .grow:hover { transform: scale(1.1); }
 
     </style>    
 @endsection
@@ -66,10 +63,10 @@
                         @foreach($birthdays as $birthday)
                         <div class="col-md-4">
                             <div>
-                              <img src="{{asset('images/'.$birthday->image)}}" class="img-circle img-thumbnail">
+                              <img src="{{asset('images/'.$birthday->image)}}" class="img-circle img-thumbnail grow">
                               <h3>{{$birthday->name}}</h3>
                               <p>Rp. {{$birthday->price}}</p>
-                              <a href="{{route('gallery.show',$birthday->id)}}" class="btn btn-primary" title="Order">Order >></a>
+                              <a href="{{route('gallery.show',$birthday->id)}}" class="btn btn-primary" title="Order">Order</a>
                             <br><br>
 
                             </div>
@@ -86,10 +83,10 @@
                         @foreach($anniversarys as $anniversary)
                         <div class="col-md-4">
                             <div>
-                              <img src="{{asset('images/'.$anniversary->image)}}" class="img-circle img-thumbnail">
+                              <img src="{{asset('images/'.$anniversary->image)}}" class="img-circle img-thumbnail grow">
                               <h3>{{$anniversary->name}}</h3>
                               <p>Rp. {{$anniversary->price}}</p>
-                              <a href="{{route('gallery.show',$anniversary->id)}}" class="btn btn-primary" title="Order">Order >></a>
+                              <a href="{{route('gallery.show',$anniversary->id)}}" class="btn btn-primary" title="Order">Order</a>
                               <br><br>
                             </div>
                         </div>
@@ -105,7 +102,7 @@
                         @foreach($seasonals as $seasonal)
                         <div class="col-md-4">
                             <div>
-                              <img src="{{asset('images/'.$seasonal->image)}}" class="img-circle img-thumbnail">
+                              <img src="{{asset('images/'.$seasonal->image)}}" class="img-circle img-thumbnail grow">
                               <h3>{{$seasonal->name}}</h3>
                               <p>Rp. {{$seasonal->price}}</p>
                               <a href="{{route('gallery.show',$seasonal->id)}}" class="btn btn-primary" title="Order">Order</a>

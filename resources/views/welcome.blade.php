@@ -36,12 +36,10 @@
 
         .stylish-panel > div:hover img {
             border-radius: 50%;
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -o-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
         }
+
+                        .grow { transition: all .2s ease-in-out; }
+            .grow:hover { transform: scale(1.1); }
         
         .responsive-background{
             background-size: cover;
@@ -130,7 +128,7 @@
             @foreach($cakes as $cake)
               <div class="col-md-4">
                 <div>
-                  <img src="{{asset('images/'.$cake->image)}}" class="img-circle img-thumbnail">
+                  <img src="{{asset('images/'.$cake->image)}}" class="img-circle img-thumbnail grow">
                   <h3>{{$cake->name}}</h3>
                   <p>{{$cake->description}}</p>
                   <a href="{{route('gallery.show',$cake->id)}}" class="btn btn-primary" title="Order">Order</a>
