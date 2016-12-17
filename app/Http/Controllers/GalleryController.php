@@ -78,6 +78,56 @@ class GalleryController extends Controller
         return redirect()->route('welcome');
     }
 
+        public function orderSignature(Request $request,$id){
+        $this->validate($request,array(
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'email' => 'required|max:255',
+            'date' => 'required|max:255',
+            'address' => 'required',
+            ));
+
+        $cake=Cake::find($id);
+        $order= new Order;
+        $order->name=$request->name;
+        $order->phone=$request->phone;
+        $order->email=$request->email;
+        $order->date=$request->date;
+        $order->address=$request->address;
+        $order->notes=$request->notes;
+
+        $order->cake_name=$cake->name;
+        $order->cake_description=$cake->description;
+        $order->cake_size=$cake->size;
+        $order->cake_price=$cake->price;
+        $order->cake_image=$cake->image;
+        $order->order_from="Web";
+        $order->status="Waiting Confirmation";
+        $order->save();
+
+        $user=User::find(1);
+        $data=array(
+            'email'=>$user->email,
+            'subject'=>'Congratulations! You Got New Order!',
+            'order_id'=>$order->id,
+            'customer_name'=>$order->name,
+            'customer_email'=>$order->email,
+            'customer_phone'=>$order->phone,
+            'delivery_date'=>$order->date,
+            'cake_name'=>$order->cake_name,
+            'cake_price'=>$order->cake_price,
+            );
+        Mail::send('email.order',$data,function($message) use($data){
+            $message->from('skripsweetcake@gmail.com');
+            $message->to($data['email']);
+            $message->subject($data['subject']);
+        });
+        $response = [
+          'message' => 'success'
+        ];
+        return response()->json($response);
+    }
+
     public function orderFromApps(Request $request){
         $this->validate($request,array(
             'name' => 'required|max:255',

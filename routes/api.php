@@ -87,6 +87,7 @@ Route::get('manage/config','ManageController@getConfig');
 Route::get('signature/','GalleryController@getSignature');
 
 Route::post('order/','GalleryController@orderFromApps');
+Route::post('orderSignature/{id}','GalleryController@orderSignature');
 
 
 
