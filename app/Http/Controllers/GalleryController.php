@@ -173,9 +173,9 @@ class GalleryController extends Controller
 
         public function getSignature(){
 
-        $birthday=DB::table('cakes')->select('name','description','size','price','image')->where('category','=','Birthday')->get();
-        $anniversary=DB::table('cakes')->select('name','description','size','price','image')->where('category','=','Anniversary')->get();
-        $seasonal=DB::table('cakes')->select('name','description','size','price','image')->where('category','=','Seasonal')->get();
+        $birthday=DB::table('cakes')->select('id','name','description','size','price','image')->where('category','=','Birthday')->get();
+        $anniversary=DB::table('cakes')->select('id','name','description','size','price','image')->where('category','=','Anniversary')->get();
+        $seasonal=DB::table('cakes')->select('id','name','description','size','price','image')->where('category','=','Seasonal')->get();
 
 
         $response = [
