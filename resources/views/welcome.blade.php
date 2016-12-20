@@ -252,7 +252,7 @@
                     <h2 class="section-heading">Discover what all the buzz is about!</h2>
                     <p>Our app is available on android device! Download now to get started!</p>
                     <div class="badges">
-                        <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
+                        <a class="badge-link" target="_blank" href="https://drive.google.com/open?id=0B7-_MssaBcyxb2pkM3FMWHRteXM"><img src="img/google-play-badge.svg" alt=""></a>
                     </div>
                 </div>
             </div>
