@@ -42,7 +42,7 @@ new Vue({
     },
     updateItem: function() {
       if(this.fileName!=''){
-        this.profile.logo_image=this.fileName;
+        this.profile.image=this.fileName;
       }
       var input = this.profile;
       var ini=this;

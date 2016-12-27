@@ -46,7 +46,9 @@ class SettingController extends Controller
             'bio' => 'required',
             'image'=>'required'
         ));
+        
         $profile=Profile::find(1)->update($request->all());
+
 
         return response()->json($profile);
     }

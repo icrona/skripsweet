@@ -171,7 +171,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{asset('images/logo/logo.png')}}" ></a>
+                    <img src="{{asset('images/logo/'.$logo_name)}}" ></a>
                 </div>
                 <div class="col-md-8">
                     <div class="container-fluid">
