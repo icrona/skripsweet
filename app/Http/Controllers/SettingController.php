@@ -30,7 +30,7 @@ class SettingController extends Controller
 
     public function uploadLogo(Request $request){
         $image=$request->file;
-        $filename='logo'.'.'.$image->getClientOriginalExtension();
+        $filename=time().'.'.$image->getClientOriginalExtension();
         $location=public_path('images/logo/'.$filename);
         Image::make($image)->resize(400,400)->save($location);
 
@@ -82,6 +82,19 @@ class SettingController extends Controller
             'message'=>'success'
         ];           
         return response()->json($response);;
+    }
+
+    public function profileSettings(){
+        $profile=Profile::find(1);
+        $min_days=$profile->days;
+        $image=$profile->image;
+
+        $response=[
+            'min_days'=>$min_days,
+            'image'=>$image
+        ];
+
+        return response()->json($response);
     }         
 
 }

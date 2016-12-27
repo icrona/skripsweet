@@ -267,8 +267,6 @@ class ManageController extends Controller
     public function getConfig(){
         $get=Version::find(1);
         $get_version=$get->version;
-        $profile=Profile::find(1);
-        $days=$profile->days;
 
         $flavour=DB::table('flavours')->select('name','price')->get();
         $size=DB::table('sizes')->select('size','rate')->orderBy('size','asc')->get();
@@ -285,7 +283,6 @@ class ManageController extends Controller
 
         $response = [
           'version' => $get_version,
-          'min_days'=> $days,
           'flavour' => $flavour,
           'size'    => $size,
           'shape'   => $shape,
