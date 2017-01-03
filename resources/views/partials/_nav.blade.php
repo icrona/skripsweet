@@ -11,25 +11,25 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href={{url('/orders')}}>Orders</a>
+                    <li class="{{ Request::is('orders') ? "active" : "" }}">
+                        <a href={{url('/orders')}}>Orders</a>
                     </li>
                             
-                    <li>
-                        <a class="page-scroll" href={{url('/report')}}>Report</a>
+                    <li class="{{ Request::is('report') ? "active" : "" }}">
+                        <a href={{url('/report')}}>Report</a>
                     </li>
                    
-                    <li>
-                        <a class="page-scroll" href={{url('/manage')}}>Manage</a>
+                    <li class="{{ Request::is('manage') ? "active" : "" }}">
+                        <a href={{url('/manage')}}>Manage</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href={{url('/signatures')}}>Signatures</a>
+                    <li class="{{ Request::is('signatures') ? "active" : "" }}">
+                        <a href={{url('/signatures')}}>Signatures</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href={{url('/settings')}}>Settings</a>
+                    <li class="{{ Request::is('settings') ? "active" : "" }}">
+                        <a href={{url('/settings')}}>Settings</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href={{url('/logout')}}>Log Out</a>
+                    <li class="{{ Request::is('logout') ? "active" : "" }}">
+                        <a href={{url('/logout')}}>Log Out</a>
                     </li>
                 </ul>
             </div>
