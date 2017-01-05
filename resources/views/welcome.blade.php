@@ -212,7 +212,7 @@
             </div>
     </section>
     
-    <section id="faq" class="container-fluid responsive-background" >
+    <section id="faq" class="container-fluid responsive-background" style="background-color:#ffe0b3;" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">

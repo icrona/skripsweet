@@ -76,7 +76,7 @@
                         <div class="col-md-3 portfolio-item" v-for="cake in cakes">
                             <img class="img-responsive img-thumbnail" src="{{ asset('images/')}}/@{{cake.image}}"><br>
                             <b>@{{cake.name}}</b> <br>RP. @{{cake.price}} <br><br>
-                            <button class="edit-modal btn btn-warning btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
+                            <button class="edit-modal btn btn-info btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
                             <span class="glyphicon glyphicon-edit"></span> 
                           </button>
                           <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(cake)">
@@ -212,7 +212,7 @@
                         <div class="col-md-3 portfolio-item" v-for="cake in cakes">
                             <img class="img-responsive img-thumbnail" src="{{ asset('images/')}}/@{{cake.image}}"><br>
                             <b>@{{cake.name}}</b> <br>RP. @{{cake.price}} <br><br>
-                            <button class="edit-modal btn btn-warning btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
+                            <button class="edit-modal btn btn-info btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
                             <span class="glyphicon glyphicon-edit"></span> 
                           </button>
                           <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(cake)">
@@ -347,7 +347,7 @@
                         <div class="col-md-3 portfolio-item" v-for="cake in cakes">
                             <img class="img-responsive img-thumbnail" src="{{ asset('images/')}}/@{{cake.image}}"><br>
                             <b>@{{cake.name}}</b> <br>RP. @{{cake.price}} <br><br>
-                            <button class="edit-modal btn btn-warning btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
+                            <button class="edit-modal btn btn-info btn btn-sm" onclick="resetFileForm()" @click.prevent="editItem(cake)">
                             <span class="glyphicon glyphicon-edit"></span> 
                           </button>
                           <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(cake)">

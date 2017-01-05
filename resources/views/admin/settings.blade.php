@@ -18,7 +18,7 @@ table {
                     }
                     
                     tr:nth-child(even){
-                        background-color:rgba(255, 255, 255,1);
+                        background-color:#dddddd;
                     }
                     tr:nth-child(odd){
                         background-color:rgba(255, 255, 255,1);
@@ -232,7 +232,7 @@ table {
                         <td>@{{ faq.question }}</td>
                         <td>@{{ faq.answer }}</td>
                         <td>
-                          <button class="edit-modal btn btn-warning btn btn-sm" @click.prevent="editItem(faq)">
+                          <button class="edit-modal btn btn-info btn btn-sm" @click.prevent="editItem(faq)">
                             <span class="glyphicon glyphicon-edit"></span> 
                           </button>
                           <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(faq)">

@@ -133,8 +133,12 @@
                         <td>@{{size.size}}</td>
                         <td>@{{size.rate}}</td>
                         <td>
-                                <a href="#" @click.prevent="editItem(size)" >Edit</a>
-                                <a href="#" @click.prevent="deleteItem(size)">Delete</a>
+                          <button class="edit-modal btn btn-info btn btn-sm" @click.prevent="editItem(size)">
+                            <span class="glyphicon glyphicon-edit"></span> 
+                          </button>
+                          <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(size)">
+                            <span class="glyphicon glyphicon-trash"></span> 
+                          </button>
                         </td>            
                     </tr>                     
                 </table>
@@ -237,8 +241,12 @@
                         <td>@{{flavour.name}}</td>
                         <td>@{{flavour.price}}</td>
                             <td>
-                                <a href="#" @click.prevent="editItem(flavour)" >Edit</a>
-                                <a href="#" @click.prevent="deleteItem(flavour)">Delete</a>
+                          <button class="edit-modal btn btn-info btn btn-sm" @click.prevent="editItem(flavour)">
+                            <span class="glyphicon glyphicon-edit"></span> 
+                          </button>
+                          <button class="delete-btn delete-modal btn btn-danger btn btn-sm" @click.prevent="deleteItem(flavour)">
+                            <span class="glyphicon glyphicon-trash"></span> 
+                          </button>
                         </td>
                         
                     </tr>
@@ -364,7 +372,11 @@
                         <td>@{{frosting.three}}</td>
                         <td>@{{frosting.four}}</td>
                         <td><input type="checkbox" v-model="frosting.availability" @click="clickCheckBox(frosting)"></td>
-                        <td><a href="#" @click.prevent="editItem(frosting)">Edit</a></td>                     
+                        <td>
+                            <button class="edit-modal btn btn-info btn btn-sm" @click.prevent="editItem(frosting)">
+                            <span class="glyphicon glyphicon-edit"></span> 
+                          </button>
+                          </button></td>                     
                     </tr>
                 </table>
 
@@ -453,7 +465,9 @@
 
                             <img height="150" width="150" src="{{ asset('images/decorations/')}}/@{{decoration.image}}"><br>
                             <b>@{{decoration.name}}</b> <br> Rp. @{{decoration.price}} <br><br>
-                            <a href="#" @click.prevent="editItem(decoration)" class="btn btn-primary btn btn-sm">Edit</a>
+                            <button class="edit-modal btn btn-info btn btn-sm" @click.prevent="editItem(decoration)">
+                            <span class="glyphicon glyphicon-edit"></span> 
+                          </button>
                             <div class="checkbox">
                                 <label><input type="checkbox" v-model="decoration.availability" @click="clickCheckBox(decoration)"  >Availability</label>
                             </div>
@@ -537,7 +551,9 @@
                         <div class="col-md-2 portfolio-item" v-for="pipe in pipes">
                             <img height="100" width="100" src="{{ asset('images/pipe0')}}/@{{pipe.image}}"><br>
                             <b>@{{pipe.name}}</b> <br> Rp. @{{pipe.price}} <br><br>
-                            <a href="#" @click.prevent="editItem(pipe)" class="btn btn-primary btn btn-sm">Edit</a>
+                                                        <button class="edit-modal btn btn-info btn btn-sm" @click.prevent="editItem(pipe)">
+                            <span class="glyphicon glyphicon-edit"></span> 
+                          </button>
                             <div class="checkbox">
                                 <label><input type="checkbox" v-model="pipe.availability" @click="clickCheckBox(pipe)"  >Availability</label>
                             </div>
@@ -586,7 +602,9 @@
                         <div class="col-md-2 portfolio-item" v-for="pipe in pipes">
                             <img height="100" width="100" src="{{ asset('images/pipe1')}}/@{{pipe.image}}"><br>
                             <b>@{{pipe.name}}</b> <br> Rp. @{{pipe.price}} <br><br>
-                            <a href="#" @click.prevent="editItem(pipe)" class="btn btn-primary btn btn-sm">Edit</a>
+                          <button class="edit-modal btn btn-info btn btn-sm" @click.prevent="editItem(pipe)">
+                            <span class="glyphicon glyphicon-edit"></span> 
+                          </button>
                             <div class="checkbox">
                                 <label><input type="checkbox" v-model="pipe.availability" @click="clickCheckBox(pipe)"  >Availability</label>
                             </div>
@@ -634,7 +652,9 @@
                         <div class="col-md-2 portfolio-item" v-for="sprinkle in sprinkles">
                             <img height="100" width="100" src="{{ asset('images/sprinkles')}}/@{{sprinkle.image}}"><br>
                             <b>@{{sprinkle.name}}</b> <br> Rp. @{{sprinkle.price}} <br><br>
-                            <a href="#" @click.prevent="editItem(sprinkle)" class="btn btn-primary btn btn-sm">Edit</a>
+                          <button class="edit-modal btn btn-info btn btn-sm" @click.prevent="editItem(pipe)">
+                            <span class="glyphicon glyphicon-edit"></span> 
+                          </button>
                             <div class="checkbox">
                                 <label><input type="checkbox" v-model="sprinkle.availability" @click="clickCheckBox(sprinkle)"  >Availability</label>
                             </div>
