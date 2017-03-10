@@ -27,6 +27,7 @@ class ManageController extends Controller
 {
 	public function showFlavour()
 	{
+        DB::table('flavours')->truncate();
 		$flavours = Flavour::paginate(10);
 		$response = [
           'pagination' => [
