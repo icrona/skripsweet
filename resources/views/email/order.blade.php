@@ -92,7 +92,7 @@ $style = [
                                                 You got order {{$cake_name}} - Rp {{$cake_price}} from {{$customer_name}}  
                                             </p>
                                             <p style="{{ $style['paragraph'] }}">
-                                                You cant contact he/she by email: {{$customer_email}} or phone {{$customer_phone}}  
+                                                You can contact him/her by email: {{$customer_email}} or phone {{$customer_phone}}  
                                             </p>
                                             <p style="{{ $style['paragraph'] }}">
                                                 Delivery date is {{$delivery_date}}  
