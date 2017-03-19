@@ -12,6 +12,7 @@ class VersionSeeder extends Seeder
      */
     public function run()
     {
+        Version::truncate();
         Version::create([
         	'version' => 'Initial Version'
         	]);
